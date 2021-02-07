@@ -1,6 +1,7 @@
 function submitFunction(){
 	var a = document.getElementById("brutoAmount").value;
 	document.getElementById("salaryResult").innerHTML = a;
+	document.getElementById("blockDarbaAlgaResult").style.visibility = "visible";
 };
 
 

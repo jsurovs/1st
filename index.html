@@ -16,29 +16,27 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
 </head>
-
 <body>
-	<h1 class="page-title">Laipni lūdzam darba algas nodokļu kalkulātorā</h1>
+	<div class="col-md-12"><h1 class="page-title">Laipni lūdzam darba algas nodokļu kalkulātorā</h1></div>
 	<div class="container">
 		<div class="row justify-content-center">
-			<div id="params" class="col-md-9">
+			<div id="params" class="col-md-8">
 				<div class="col-md-12">
 					<h1 class="page-title">Datu ievade</h1>
-					<div class="triangle-down"></div>
 				</div>
 				<div class="row">
-					<div class="col-md-9">
+					<div class="param col-md-8">
 						<span class="param-title">
 							<span class="param-number">1.</span>
 							<span id="title-bruto">Ievadie bruto darba algu (alga pirms nodokļiem)</span>
 						</span>
 					</div>
-					<div class="col-md-3">
+					<div class="col-md-4">
 						<input id="brutoAmount" type="number" class="form-control" value="0.00" placeholder="0.00">
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-md-6">
+					<div class="param col-md-6">
 						<span class="param-title">
 							<span class="number">2.</span>
 							<span>Izvēlaties sociālo iemaksu likmi</span>
@@ -55,75 +53,102 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-md-9">
+					<div class="param col-md-8">
 						<span class="param-title">
 							<span class="number">3.</span>
-							<span>Vai personai ir iesniegta nodokļu grāmatiņa pie darba devēja?</span>
+							<span>Iesniegta nodokļu grāmatiņa pie darba devēja</span>
 						</span>
 					</div>
-					<div class="col-md-3">
+					<div class="col-md-4">
 						<select id="taxbook" class="form-select" onchange="taxBookIssued()">
-							<option selected disabled="disabled">Izvēlies vērtību</option>
+							<option selected disabled="disabled">Izvelne</option>
 							<option value="True">Jā</option>
 							<option value="False">Nē</option>
 						</select>
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-md-9">
+					<div class="param col-md-8">
 						<span class="param-title">
 							<span class="number">4.</span>
 							<span>Valsts noteiktais neapliekamais minimums</span>
 						</span>
 					</div>
-					<div class="col-md-3">
+					<div class="col-md-4">
 						<input type="number" class="form-control input-lg" value="0.00" disabled="disabled">
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-md-9">
+					<div class="param col-md-8">
 						<span class="param-title">
 							<span class="number">5.</span>
 							<span>Apgādībā esošo personu skaits</span>
 						</span>
 					</div>
-					<div class="col-md-3">
+					<div class="col-md-4">
 						<select class="form-select">
-							<option value="0" selected>0</option>
-							<option value="1">1 (250 EUR)</option>
-							<option value="2">2 (500 EUR)</option>
-							<option value="3">3 (750 EUR)</option>
-							<option value="4">4 (1000 EUR)</option>
-							<option value="5">5 (1250 EUR)</option>
-							<option value="6">6 (1500 EUR)</option>
-							<option value="7">7 (1750 EUR)</option>
-							<option value="8">8 (2000 EUR)</option>
-							<option value="9">7 (2250 EUR)</option>
+							<option value="0" selected disabled>Izvelne</option>
+							<option value="0">0 (0€)</option>
+							<option value="1">1 (250€)</option>
+							<option value="2">2 (500€)</option>
+							<option value="3">3 (750€)</option>
+							<option value="4">4 (1000€)</option>
+							<option value="5">5 (1250€)</option>
+							<option value="6">6 (1500€)</option>
+							<option value="7">7 (1750€)</option>
+							<option value="8">8 (2000€)</option>
+							<option value="9">7 (2250€)</option>
 						</select>
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-md-9">
+					<div class="param col-md-8">
 						<span class="param-title">
 							<span class="number">6.</span>
 							<span>Iedzīvotāju ienākuma nodoklis</span>
 						</span>
 					</div>
-					<div class="col-md-3">
+					<div class="col-md-4">
 						<input id="iin-rate" type="text" id="result" class="form-control input-lg" value="23%" disabled>
 					</div>
 				</div>
-				<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-					<button type="button" class="btn btn-primary" onclick="submitFunction()">Aprēķināt</button>
+				<!--Submit button-->
+				<div class="d-md-flex d-grid justify-content-md-end">
+					<button type="button" class="btn btn-primary" onclick="submitFunction()"><i class="fa fa-calculator"></i> Aprēķināt
+					</button>
 				</div>
 			</div>
-			<div id="results" class="col-md-3">
+			<div id="results" class="col-md-4">
 				<div class="result-title col-md-12">
 					<h1 class="page-title">Rezultāts</h1>
-					<div class="triangle-down"></div>
 				</div>
-				<div class="col-md-12">
-					<p class="salaryResult form-control" type="text" id="salaryResult" readonly></p>
+				<div class="param col-md-12">
+					<span class="param-title">
+						<span class="number">7.</span>
+						<span>DŅ Sociālais nodoklis</span>
+					</span>
+					<p class="form-control" type="text" id="resultDNsoc" readonly></p>
+				</div>
+				<div class="param col-md-12">
+					<span class="param-title">
+						<span class="number">8.</span>
+						<span>DD Sociālais nodoklis</span>
+					</span>
+					<p class="form-control" type="text" id="resultDDsoc" readonly></p>
+				</div>
+				<div class="param col-md-12">
+					<span class="param-title">
+						<span class="number">9.</span>
+						<span>Iedzīvotāju ienākuma nodoklis</span>
+					</span>
+					<p class="form-control" type="text" id="resultIIN" readonly></p>
+				</div>
+				<div class="param col-md-12" id="blockDarbaAlgaResult" style="visibility: hidden">
+					<span class="param-title">
+						<span class="number">10.</span>
+						<span>Darba alga</span>
+					</span>
+					<p class="salaryResult form-control" type="text" id="resultDAbruto" readonly></p>
 				</div>
 			</div>
 		</div>
