@@ -1,14 +1,13 @@
-function submitFunction(){
-	var a = document.getElementById("brutoAmount").value;
-	document.getElementById("salaryResult").innerHTML = a;
-	document.getElementById("blockDarbaAlgaResult").style.visibility = "visible";
-};
+// // Nodokļu gŗamatiņas stāvoklis un IIN nodokļu likme
+function taxBookSubmitted(){
+	var taxBookStatus = document.getElementById("tax-book").value;
+	alert(taxBookStatus);
 
-
-function taxBookIssued(){
-	var a = document.getElementById("taxbook").value;
-	if (a == "true"){
-		document.getElementById("iin-rate").innerHTML = 20;
-		alert("a")
+	var rate;
+	if(taxBookStatus = "Jā"){
+		rate = "20%"
+	} else {
+		rate = "23%"
 	}
-}
+	document.getElementById("iin-rate").innerHTML = rate;
+};

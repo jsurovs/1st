@@ -28,11 +28,11 @@
 					<div class="param col-md-8">
 						<span class="param-title">
 							<span class="param-number">1.</span>
-							<span id="title-bruto">Ievadie bruto darba algu (alga pirms nodokļiem)</span>
+							<span id="bruto-title">Ievadie bruto darba algu (alga pirms nodokļiem)</span>
 						</span>
 					</div>
 					<div class="col-md-4">
-						<input id="brutoAmount" type="number" class="form-control" value="0.00" placeholder="0.00">
+						<input id="bruto-amount" type="number" class="form-control" value="0.00" placeholder="0.00">
 					</div>
 				</div>
 				<div class="row">
@@ -60,10 +60,10 @@
 						</span>
 					</div>
 					<div class="col-md-4">
-						<select id="taxbook" class="form-select" onchange="taxBookIssued()">
+						<select id="tax-book" class="form-select" onchange="taxBookSubmitted()">
 							<option selected disabled="disabled">Izvelne</option>
-							<option value="True">Jā</option>
-							<option value="False">Nē</option>
+							<option value="Jā">Jā</option>
+							<option value="Nē">Nē</option>
 						</select>
 					</div>
 				</div>
@@ -114,36 +114,35 @@
 				</div>
 				<!--Submit button-->
 				<div class="d-md-flex d-grid justify-content-md-end">
-					<button type="button" class="btn btn-primary" onclick="submitFunction()"><i class="fa fa-calculator"></i> Aprēķināt
-					</button>
+					<button type="button" onclick="submit()" class="btn btn-primary"><i class="fa fa-calculator"></i> Aprēķināt</button>
 				</div>
 			</div>
-			<div id="results" class="col-md-4">
+			<div id="resultsBlock" class="col-md-4" style="visibility: hidden">
 				<div class="result-title col-md-12">
 					<h1 class="page-title">Rezultāts</h1>
 				</div>
-				<div class="param col-md-12">
+				<div class="param col-md-12" id="blockDNsocResult">
 					<span class="param-title">
 						<span class="number">7.</span>
 						<span>DŅ Sociālais nodoklis</span>
 					</span>
 					<p class="form-control" type="text" id="resultDNsoc" readonly></p>
 				</div>
-				<div class="param col-md-12">
+				<div class="param col-md-12" id="blockDDsocResult">
 					<span class="param-title">
 						<span class="number">8.</span>
 						<span>DD Sociālais nodoklis</span>
 					</span>
 					<p class="form-control" type="text" id="resultDDsoc" readonly></p>
 				</div>
-				<div class="param col-md-12">
+				<div class="param col-md-12" id="blockIINresult">
 					<span class="param-title">
 						<span class="number">9.</span>
 						<span>Iedzīvotāju ienākuma nodoklis</span>
 					</span>
 					<p class="form-control" type="text" id="resultIIN" readonly></p>
 				</div>
-				<div class="param col-md-12" id="blockDarbaAlgaResult" style="visibility: hidden">
+				<div class="param col-md-12" id="blockDarbaAlgaResult">
 					<span class="param-title">
 						<span class="number">10.</span>
 						<span>Darba alga</span>
@@ -157,5 +156,6 @@
 		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
 		<script type="text/javascript" src="../tax-calculator/assets/js/script.js"></script>
+		<script type="text/javascript" src="../tax-calculator/assets/js/hide-result-block.js"></script>
 </body>
 </html>
