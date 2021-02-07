@@ -18,10 +18,14 @@
 </head>
 
 <body>
-	<h1 class="page-title">Laipni lūdzam nodokļu kalkulātorā</h1>
+	<h1 class="page-title">Laipni lūdzam darba algas nodokļu kalkulātorā</h1>
 	<div class="container">
 		<div class="row justify-content-center">
 			<div id="params" class="col-md-9">
+				<div class="col-md-12">
+					<h1 class="page-title">Datu ievade</h1>
+					<div class="triangle-down"></div>
+				</div>
 				<div class="row">
 					<div class="col-md-9">
 						<span class="param-title">
@@ -41,7 +45,7 @@
 						</span>
 					</div>
 					<div class="col-md-6">
-						<select class="form-select" aria-label="Sociālo iemaksu vērtība">
+						<select class="form-select pull-right" aria-label="Sociālo iemaksu vērtība">
 							<option value="10.50%" selected>Pamatlikme 10.50%</option>
 							<option value="9.25%">Likme pensionāram 9.25%</option>
 							<option value="9.76%">Likme I un II gr.inv., spec. pens. saņēmējiem 9.76%</option>
@@ -59,7 +63,7 @@
 					</div>
 					<div class="col-md-3">
 						<select id="taxbook" class="form-select" onchange="taxBookIssued()">
-							<option selected>Izvēlies vērtību</option>
+							<option selected disabled="disabled">Izvēlies vērtību</option>
 							<option value="True">Jā</option>
 							<option value="False">Nē</option>
 						</select>
@@ -114,8 +118,9 @@
 				</div>
 			</div>
 			<div id="results" class="col-md-3">
-				<div class="sticky-md-top">
-					<h2>Darba alga</h2>
+				<div class="result-title col-md-12">
+					<h1 class="page-title">Rezultāts</h1>
+					<div class="triangle-down"></div>
 				</div>
 				<div class="col-md-12">
 					<p class="salaryResult form-control" type="text" id="salaryResult" readonly></p>

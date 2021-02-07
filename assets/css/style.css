@@ -17,6 +17,12 @@ html {
   -moz-box-sizing: inherit;
   box-sizing: inherit;
 }
+.page-title{
+background-color: #009C4C;
+color: white;
+font-size: 35px;
+line-height: 60px;
+}
 h1{
 	text-align: center;
 	border-bottom: solid;
@@ -32,4 +38,15 @@ h1{
 }
 .salaryResult{
   height: 40px;
+}
+
+
+/* ----- RESPONSIVE -----*/
+@media (max-width: 768px){
+  .result-title{
+  margin-top: 20px;
+  }
+  .btn{
+    margin-top: 10px;
+  }
 }
