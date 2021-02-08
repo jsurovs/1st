@@ -28,11 +28,11 @@
 					<div class="param col-md-8">
 						<span class="param-title">
 							<span class="param-number">1.</span>
-							<span id="bruto-title">Ievadie bruto darba algu (alga pirms nodokļiem)</span>
+							<span id="gross-title">Ievadie bruto darba algu (alga pirms nodokļiem)</span>
 						</span>
 					</div>
 					<div class="col-md-4">
-						<input id="bruto-amount" type="number" class="form-control" value="0.00" placeholder="0.00">
+						<input id="gross-amount" type="number" class="grossInput form-control" value="0.00" placeholder="0.00">
 					</div>
 				</div>
 				<div class="row">
@@ -43,12 +43,12 @@
 						</span>
 					</div>
 					<div class="col-md-6">
-						<select class="form-select pull-right" aria-label="Sociālo iemaksu vērtība">
-							<option value="10.50%" selected>Pamatlikme 10.50%</option>
-							<option value="9.25%">Likme pensionāram 9.25%</option>
-							<option value="9.76%">Likme I un II gr.inv., spec. pens. saņēmējiem 9.76%</option>
-							<option value="8.87%">Likme ieslodzītājam 8.87%</option>
-							<option value="7.67%">Likme ieslodzītājam pensionāram 7.67%</option>
+						<select class="form-select" id="socErate">
+							<option value="0.1050" selected>Pamatlikme 10.50%</option>
+							<option value="0.9250">Likme pensionāram 9.25%</option>
+							<option value="0.9760">Likme I un II gr.inv., spec. pens. saņēmējiem 9.76%</option>
+							<option value="0.8870">Likme ieslodzītājam 8.87%</option>
+							<option value="0.7670">Likme ieslodzītājam pensionāram 7.67%</option>
 						</select>
 					</div>
 				</div>
@@ -60,10 +60,10 @@
 						</span>
 					</div>
 					<div class="col-md-4">
-						<select id="tax-book" class="form-select" onchange="taxBookSubmitted()">
+						<select class="taxBook form-select" onchange="taxBookSubmitted()">
 							<option selected disabled="disabled">Izvelne</option>
-							<option value="Jā">Jā</option>
-							<option value="Nē">Nē</option>
+							<option value="20">Jā</option>
+							<option value="23">Nē</option>
 						</select>
 					</div>
 				</div>
@@ -109,7 +109,7 @@
 						</span>
 					</div>
 					<div class="col-md-4">
-						<input id="iin-rate" type="text" id="result" class="form-control input-lg" value="23%" disabled>
+						<input type="number" id="incomeRate" class="incomeRate form-control input-lg" disabled style="background-color: #e9ecef;" value="23.00%">
 					</div>
 				</div>
 				<!--Submit button-->
@@ -121,33 +121,33 @@
 				<div class="result-title col-md-12">
 					<h1 class="page-title">Rezultāts</h1>
 				</div>
-				<div class="param col-md-12" id="blockDNsocResult">
+				<div class="param col-md-12">
 					<span class="param-title">
 						<span class="number">7.</span>
 						<span>DŅ Sociālais nodoklis</span>
 					</span>
-					<p class="form-control" type="text" id="resultDNsoc" readonly></p>
+					<p class="resultSocErate form-control" type="text" readonly></p>
 				</div>
-				<div class="param col-md-12" id="blockDDsocResult">
+				<div class="param col-md-12">
 					<span class="param-title">
 						<span class="number">8.</span>
 						<span>DD Sociālais nodoklis</span>
 					</span>
-					<p class="form-control" type="text" id="resultDDsoc" readonly></p>
+					<p class="resultSocCrate form-control" type="text" readonly></p>
 				</div>
-				<div class="param col-md-12" id="blockIINresult">
+				<div class="param col-md-12">
 					<span class="param-title">
 						<span class="number">9.</span>
 						<span>Iedzīvotāju ienākuma nodoklis</span>
 					</span>
-					<p class="form-control" type="text" id="resultIIN" readonly></p>
+					<p class="resultIncomeTax form-control" type="text" readonly></p>
 				</div>
-				<div class="param col-md-12" id="blockDarbaAlgaResult">
+				<div class="param col-md-12">
 					<span class="param-title">
 						<span class="number">10.</span>
 						<span>Darba alga</span>
 					</span>
-					<p class="salaryResult form-control" type="text" id="resultDAbruto" readonly></p>
+					<p class="resultGross form-control" type="text" readonly></p>
 				</div>
 			</div>
 		</div>

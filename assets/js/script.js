@@ -1,13 +1,9 @@
 // // Nodokļu gŗamatiņas stāvoklis un IIN nodokļu likme
 function taxBookSubmitted(){
-	var taxBookStatus = document.getElementById("tax-book").value;
-	alert(taxBookStatus);
-
-	var rate;
-	if(taxBookStatus = "Jā"){
-		rate = "20%"
-	} else {
-		rate = "23%"
+	var status = document.querySelector(".taxBook").value;
+	if(status = "20"){
+		document.querySelector(".incomeRate").value = "0.20";
+	} else if(status = "23"){
+		document.querySelector(".incomeRate").value = "0.23";
 	}
-	document.getElementById("iin-rate").innerHTML = rate;
-};
+}
