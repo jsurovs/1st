@@ -57,11 +57,13 @@ html {
 }
 .resultExpensesSum{
 	font-weight: bold;
+	text-align: center;
+	color: green;
 }
 .resultGross{
 	font-weight: bold;
 	color: red;
-	
+	text-align: center;
 }
 /* ----- RESPONSIVE -----*/
 @media (max-width: 768px){
