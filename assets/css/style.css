@@ -30,6 +30,14 @@ html {
 	font-weight: bold;
 	min-height: 55px;
 }
+.lastparam{
+	margin-top: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;	
+	font-weight: bold;
+	min-height: 55px;
+}
 .container {
   padding-right: 15px;
   padding-left: 15px;
@@ -43,6 +51,15 @@ html {
   	height: 40px;
   	min-width: 135px;
 	font-weight: 500;
+}
+.resultsBlockClass{
+	height: auto;
+}
+.resultExpensesSum{
+	font-weight: bold;
+}
+.resultGross{
+	font-weight: bold;
 }
 /* ----- RESPONSIVE -----*/
 @media (max-width: 768px){

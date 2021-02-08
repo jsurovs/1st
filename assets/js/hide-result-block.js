@@ -1,16 +1,14 @@
 function submit(){
+	
 	//Set visible result section
 	const newLocal = "visible"; document.getElementById("resultsBlock").style.visibility=newLocal;
-	
-	validation(grossInput);
-
-    //Tax calculation
 	
 	//Variables
 	var grossSalary = document.querySelector(".grossInput").value;
 	var socialEmployeeRate = document.getElementById("socErate").value;
 	var incomeTaxRate = document.querySelector(".incomeRate").value;
 	var Dependents = document.querySelector(".dependents").value;
+	var businessRiskFee = parseFloat(document.querySelector(".resultBusinessRiskFee").value);
 	
 	//Employee Social Tax
 	calcSocE = parseFloat(grossSalary * socialEmployeeRate);
@@ -20,18 +18,20 @@ function submit(){
 	calcSocC = parseFloat(grossSalary * 0.2359);
 	document.querySelector(".resultSocCrate").innerHTML = calcSocC.toFixed(2) + " EUR";
 	
-	//Personal Income Tax
+	//Dependents
 	calcDependents = parseFloat(Dependents * 250);
-	calcIIN = parseFloat((grossSalary-calcSocE)*incomeTaxRate);
+	document.querySelector(".resultDependents").innerHTML = calcDependents.toFixed(2) + " EUR"
+	
+	//Personal Income Tax
+	var calcIINsubtotal = parseFloat(grossSalary-calcSocE-calcDependents);
+	calcIIN = parseFloat(calcIINsubtotal*(incomeTaxRate / 100));
 	document.querySelector(".resultIncomeTax").innerHTML = calcIIN.toFixed(2) + " EUR";
-};
-
-
-function validation(grossInput){
-	var grossSalary = document.querySelector(".grossInput").value;
-    if(isNaN(grossSalary) || grossSalary = 0){
-        alert("Ievadi pareizi algas apjomu");
-    }else if(grossSalary == ""){
-        alert("Ievades lauks tukšs");
-    }
+	
+	//Salary calculation
+	calcGrossResult = (grossSalary - calcSocE - calcIIN);
+	document.querySelector(".resultGross").innerHTML = calcGrossResult.toFixed(2) + " EUR";
+	
+	//Total employer's expenses
+	calcTotal = parseFloat(grossSalary) + calcSocC + parseFloat(businessRiskFee);
+	document.querySelector(".resultExpensesSum").innerHTML = calcTotal.toFixed(2) + " EUR";
 }

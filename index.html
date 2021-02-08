@@ -45,10 +45,10 @@
 					<div class="col-md-6">
 						<select class="form-select" id="socErate">
 							<option value="0.1050" selected>Pamatlikme 10.50%</option>
-							<option value="0.9250">Likme pensionāram 9.25%</option>
-							<option value="0.9760">Likme I un II gr.inv., spec. pens. saņēmējiem 9.76%</option>
-							<option value="0.8870">Likme ieslodzītājam 8.87%</option>
-							<option value="0.7670">Likme ieslodzītājam pensionāram 7.67%</option>
+							<option value="0.0925">Likme pensionāram 9.25%</option>
+							<option value="0.0976">Likme I un II gr.inv., spec. pens. saņēmējiem 9.76%</option>
+							<option value="0.0887">Likme ieslodzītājam 8.87%</option>
+							<option value="0.0767">Likme ieslodzītājam pensionāram 7.67%</option>
 						</select>
 					</div>
 				</div>
@@ -61,9 +61,8 @@
 					</div>
 					<div class="col-md-4">
 						<select class="taxBook form-select" onchange="taxBookSubmitted()">
-							<option selected disabled="disabled">Izvelne</option>
 							<option value="20">Jā</option>
-							<option value="23">Nē</option>
+							<option value="23" selected disabled>Nē</option>
 						</select>
 					</div>
 				</div>
@@ -75,7 +74,7 @@
 						</span>
 					</div>
 					<div class="col-md-4">
-						<input type="number" class="form-control input-lg" value="0.00" disabled="disabled">
+						<input type="number" class="form-control input-lg" value="0.00" disabled="disabled" id="neapl">
 					</div>
 				</div>
 				<div class="row">
@@ -109,7 +108,7 @@
 						</span>
 					</div>
 					<div class="col-md-4">
-						<input type="number" id="incomeRate" class="incomeRate form-control input-lg" disabled style="background-color: #e9ecef;" value="23.00%">
+						<input type="text" id="incomeRate" class="incomeRate form-control input-lg" disabled style="background-color: #e9ecef;" value="23.00" placeholder="23.00%">
 					</div>
 				</div>
 				<!--Submit button-->
@@ -117,7 +116,7 @@
 					<button type="button" onclick="submit()" class="btn btn-primary"><i class="fa fa-calculator"></i> Aprēķināt</button>
 				</div>
 			</div>
-			<div id="resultsBlock" class="col-md-4" style="visibility: hidden">
+			<div id="resultsBlock" class="resultsBlockClass col-md-4" style="visibility: hidden">
 				<div class="result-title col-md-12">
 					<h1 class="page-title">Rezultāts</h1>
 				</div>
@@ -138,16 +137,37 @@
 				<div class="param col-md-12">
 					<span class="param-title">
 						<span class="number">9.</span>
+						<span>Atvieglojumi par apgādājamiem</span>
+					</span>
+					<p class="resultDependents form-control" type="text" readonly></p>
+				</div>
+				<div class="param col-md-12">
+					<span class="param-title">
+						<span class="number">10.</span>
 						<span>Iedzīvotāju ienākuma nodoklis</span>
 					</span>
 					<p class="resultIncomeTax form-control" type="text" readonly></p>
 				</div>
 				<div class="param col-md-12">
 					<span class="param-title">
-						<span class="number">10.</span>
+						<span class="number">11.</span>
 						<span>Darba alga</span>
 					</span>
 					<p class="resultGross form-control" type="text" readonly></p>
+				</div>
+				<div class="param col-md-12">
+					<span class="param-title">
+						<span class="number">12.</span>
+						<span>Uzņēmējdarbības riska valsts nodeva</span>
+					</span>
+					<input type="text" class="resultBusinessRiskFee form-control" value="0.36" readonly>
+				</div>
+				<div class="lastparam col-md-12">
+					<span class="param-title">
+						<span class="number">13.</span>
+						<span>Darba devēja kopējie izdevumi</span>
+					</span>
+					<p class="resultExpensesSum form-control" type="text" readonly></p>
 				</div>
 			</div>
 		</div>
