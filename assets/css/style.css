@@ -60,6 +60,7 @@ html {
 }
 .resultGross{
 	font-weight: bold;
+	color: red;
 }
 /* ----- RESPONSIVE -----*/
 @media (max-width: 768px){
