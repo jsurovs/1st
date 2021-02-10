@@ -14,5 +14,4 @@ function taxBookSubmitted(){
 
 	document.querySelector(".incomeRate").value = (status == 20) ? lowRate : highRate;
 	document.getElementById("neapl").style.visibility = (status == 20) ? "visible" : "hidden";
-
 };

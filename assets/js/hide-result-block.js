@@ -3,7 +3,7 @@ function submitInput(){
 	var grossSalary = document.querySelector(".grossInput");
 
 	if(grossSalary.value <= 0){
-		alert("Ievadiet bruto algu!");
+		alert("Ievadiet vērtību!");
 		grossSalary.focus();
 	}else{
 		submit(grossSalary.value);
@@ -49,4 +49,26 @@ function submit(gross){
 	//Total employer's expenses
 	calcTotal = parseFloat(grossSalary) + calcSocC + parseFloat(businessRiskFee);
 	document.querySelector(".resultExpensesSum").innerHTML = calcTotal.toFixed(2) + " EUR";
-}
+};
+
+//function submit(neto){
+//	//Set visible result section
+//	const newLocal = "visible"; document.getElementById("resultsBlock").style.visibility=newLocal;
+//	
+//	//Variables
+//	var grossSalary = gross;
+//	var socialEmployeeRate = document.getElementById("socErate").value;
+//	var incomeTaxRate = document.querySelector(".incomeRate").value;
+//	var Dependents = document.querySelector(".dependents").value;
+//	var businessRiskFee = parseFloat(document.querySelector(".resultBusinessRiskFee").value);
+//	
+//	//Calculate income tax
+//	if(gross<Dependents){
+//		var outputIIN = 0;
+//		document.querySelector(".resultIncomeTax").innerHTML = outputIIN;
+//	} else {
+//		var calcIINsubtotal = parseFloat((gross + Dependents) * 1.20);
+//		var outputIIN = (calcIIN <= 0) ? "0.00 EUR" : calcIIN.toFixed(2) + " EUR";
+//		document.querySelector(".resultIncomeTax").innerHTML = outputIIN;
+//	}	
+//}

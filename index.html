@@ -1,23 +1,57 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--META-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<meta name="description" content="Tax calculator">
 	<meta name="author" content="FD-6">
 	<meta name="keywords" content="TAX, HTMS, CSS, SCSS, Bootstrap" />
 	<title>Nodokļu kalkulātors</title>
+
+<!--BOOTSTRAP 4.3.1-->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css">
+<!--BOOTSTRAP 5.0.0-->  
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-	<!-- <link rel="stylesheet" href="../tax-calculator/assets/css/reset.css"> -->
+<!--CSS-->
 	<link rel="stylesheet" href="../tax-calculator/assets/css/style.css">
-	<link rel="stylesheet" href="style.css">
-	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700">
+<!--ICONS-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-	<div class="col-md-12"><h1 class="page-title">Laipni lūdzam darba algas nodokļu kalkulātorā</h1></div>
+    <nav class="navbar navbar-expand-lg navbar-mainbg">
+        <a class="navbar-brand navbar-logo" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto">
+                <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0);"><i class="fas fa-tachometer-alt"></i>Tax calculator</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="javascript:void(0);"><i class="far fa-address-book"></i>Menu 1</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0);"><i class="far fa-clone"></i>Menu 2</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0);"><i class="far fa-calendar-alt"></i>Menu 3</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0);"><i class="far fa-chart-bar"></i>Menu4</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0);"><i class="far fa-copy"></i>Menu 5</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+		<div class="col-md-12"><h1 class="page-title">Laipni lūdzam darba algas nodokļu kalkulātorā</h1></div>
 	<div class="container">
 		<div class="row justify-content-center">
 			<div id="params" class="col-md-8">
@@ -25,21 +59,39 @@
 					<div class="col-md-12"><h1 class="page-title">Datu ievade</h1></div>
 				</div>
 				<div class="row">
-					<div class="param col-md-6">
-						<button class="btn btn-secondary">Bruto > Neto</button>
-					</div>
-					<div class="param col-md-6">
-						<button class="btn btn-secondary">Neto > Bruto</button>
+					<div class="col-md-12 ml-auto mr-auto">
+							<ul class=" nav nav-tabs nav-pills justify-content-center" id="nav-tab" role="tablist">
+								<li class="nav-item" role="presentation">
+									<button class="nav-link active" id="gross-tab" data-bs-toggle="tab" data-bs-target="#gross-title" type="button" role="tab" aria-controls="gross-title" aria-selected="true">
+									<i class="material-icons">euro</i>Bruto > Neto
+									</button>
+								</li>
+								<li class="nav-item" role="presentation">
+									<button class="nav-link" id="neto-tab" data-bs-toggle="tab" data-bs-target="#neto-title" type="button" role="tab" aria-controls="neto-title" aria-selected="false">
+									<i class="material-icons">euro</i>Neto > Bruto
+									</button>
+								</li>
+							</ul>
 					</div>
 				</div>
 				<div class="row">
-					<div class="param col-md-8">
-						<span class="param-title">
-							<span class="param-number">1.</span>
-							<span id="gross-title">Ievadie bruto darba algu (alga pirms nodokļiem)</span>
-						</span>
+					<div class="fistparam col-md-8">
+						<div class="tab-content" id="myTabContent">
+							<div id="gross-title" class="tab-pane fade show active" role="tabpanel" aria-labelledby="gross-tab">
+								<span class="param-title">
+									<span class="param-number">1.</span>
+									<span id="gross-title">Ievadie bruto darba algu (alga pirms nodokļiem)</span>
+								</span>
+							</div>
+							<div id="neto-title" class="tab-pane fade" role="tabpanel" aria-labelledby="neto-tab">
+								<span class="param-title">
+									<span class="param-number">1.</span>
+									<span id="neto-title">Ievadie neto darba algu (alga pēc nodokļiem)</span>
+								</span>
+							</div>
+						</div>
 					</div>
-					<div class="col-md-4">
+					<div class="fistparam col-md-4">
 						<input id="gross-amount" type="number" class="grossInput form-control" value="0.00" placeholder="0.00">
 					</div>
 				</div>
@@ -82,7 +134,7 @@
 						</span>
 					</div>
 					<div class="col-md-4">
-						<input type="number" class="form-control input-lg" value="0.00" disabled="disabled" id="neapl">
+						<input type="number" class="form-control input-lg" value="0.00" id="neapl">
 					</div>
 				</div>
 				<div class="row">
@@ -121,7 +173,7 @@
 				</div>
 				<!--Submit button-->
 				<div class="d-md-flex d-grid justify-content-md-end">
-					<button type="button" onclick="submitInput()" class="btn btn-primary"><i class="fa fa-calculator"></i> Aprēķināt</button>
+					<button type="button" onclick="submitInput()" class="btn btn-primary"><i class="fa fa-calculator"></i>Aprēķināt</button>
 				</div>
 			</div>
 			<div id="resultsBlock" class="resultsBlockClass col-md-4" style="visibility: hidden">
@@ -180,10 +232,16 @@
 			</div>
 		</div>
 	</div>
-		<!--CORE JS-->
+<!--JS BOOTSTRAP 4.3.1-->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	
+<!--SCRIPTS-->
+    <script type="text/javascript" src="../tax-calculator/assets/js/navbar.js"></script>
+	<script type="text/javascript" src="../tax-calculator/assets/js/script.js"></script>
+	<script type="text/javascript" src="../tax-calculator/assets/js/hide-result-block.js"></script>
+<!--JS BOOTSTRAP 5.0.0-->
 		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
-		<script type="text/javascript" src="../tax-calculator/assets/js/script.js"></script>
-		<script type="text/javascript" src="../tax-calculator/assets/js/hide-result-block.js"></script>
 </body>
 </html>
