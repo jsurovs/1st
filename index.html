@@ -12,47 +12,60 @@
 <!--BOOTSTRAP 4.3.1-->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css">
+	<link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/navbars/">
 <!--BOOTSTRAP 5.0.0-->  
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 <!--CSS-->
+	<link rel="stylesheet" href="../tax-calculator/assets/css/reset.css">
 	<link rel="stylesheet" href="../tax-calculator/assets/css/style.css">
+	<link rel="stylesheet" href="../tax-calculator/assets/css/navbar.css">
 <!--ICONS-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-mainbg">
-        <a class="navbar-brand navbar-logo" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <nav class="navbar navbar-expand-lg navbar-mainbg bg">
+        <a class="navbar-brand" href="#">Navbar</a>
+  		<button class="navbar-toggler" 
+				type="button" 
+				data-toggle="collapse" 
+				data-target="#navbarSupportedContent" 
+				aria-controls="navbarSupportedContent" 
+				aria-expanded="false" 
+				aria-label="Toggle navigation">
+    			<span class="navbar-toggler-icon">
+				<i class="fas fa-chevron-circle-down"></i>
+				</span>
+  		</button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto">
+            <ul class="navbar-nav ms-auto" id="navTabs">
                 <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
-                <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0);"><i class="fas fa-tachometer-alt"></i>Tax calculator</a>
-                </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="javascript:void(0);"><i class="far fa-address-book"></i>Menu 1</a>
+                    <a class="nav-link" href="#tax" data-toggle="tab"><i class="fas fa-tachometer-alt"></i>Tax calculator</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0);"><i class="far fa-clone"></i>Menu 2</a>
+                    <a class="nav-link" href="../tax-calculator/todo/index.html" data-toggle="tab"><i class="far fa-address-book"></i>Menu 1</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0);"><i class="far fa-calendar-alt"></i>Menu 3</a>
+                    <a class="nav-link" href="#ccc" data-toggle="tab"><i class="far fa-clone"></i>Menu 2</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0);"><i class="far fa-chart-bar"></i>Menu4</a>
+                    <a class="nav-link" href="#ddd" data-toggle="tab"><i class="far fa-calendar-alt"></i>Menu 3</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0);"><i class="far fa-copy"></i>Menu 5</a>
+                    <a class="nav-link" href="javascript:void(0);" data-toggle="tab"><i class="far fa-chart-bar"></i>Menu4</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0);" data-toggle="tab"><i class="far fa-copy"></i>Menu 5</a>
                 </li>
             </ul>
         </div>
     </nav>
+	<div class="tab-content" id="tab">
+		<div class="tab-pane fade in active" id="tax">
 		<div class="col-md-12"><h1 class="page-title">Laipni lūdzam darba algas nodokļu kalkulātorā</h1></div>
-	<div class="container">
+		<div class="container">
 		<div class="row justify-content-center">
 			<div id="params" class="col-md-8">
 				<div class="col-md-12">
@@ -232,7 +245,12 @@
 			</div>
 		</div>
 	</div>
-<!--JS BOOTSTRAP 4.3.1-->
+		</div>
+		<div class="tab-pane fade in active" id="bbb">2</div>
+		<div class="tab-pane fade in active" id="ccc">3</div>
+		<div class="tab-pane fade in active" id="ddd">4</div>
+	</div>
+<!--JS BOOTSTRAP ENGINE-->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	
@@ -240,8 +258,26 @@
     <script type="text/javascript" src="../tax-calculator/assets/js/navbar.js"></script>
 	<script type="text/javascript" src="../tax-calculator/assets/js/script.js"></script>
 	<script type="text/javascript" src="../tax-calculator/assets/js/hide-result-block.js"></script>
-<!--JS BOOTSTRAP 5.0.0-->
+<!--JS BOOTSTRAP ENGINE-->
 		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+<!--JS BOOTSTRAP ENGINE-->
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+		<script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+	
+	<script>
+	$(document).ready(function(){
+  $(".navTabs a").click(function(){
+    $(this).tab('show');
+  });
+  $('.navTabs a').on('shown.bs.tab', function(event){
+    var x = $(event.target).text();         // active tab
+    var y = $(event.relatedTarget).text();  // previous tab
+    $(".act span").text(x);
+    $(".prev span").text(y);
+  });
+});
+</script>
 </body>
 </html>

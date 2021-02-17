@@ -2,7 +2,7 @@
 
 body{
 	font-family: 'Roboto', sans-serif;
-}
+}/1
 * {
 	margin: 0;
 	padding: 0;
@@ -11,11 +11,19 @@ i {
 	margin-right: 10px;
 }
 /*----------multi-level-accordian-menu------------*/
-.navbar-logo{
+.navbar{
+	height: auto;
+}
+.navbar-toggler{
+	color: white;
+	font-size: 26px;
+	display: flex;
+}
+.navbar-brand{
 	padding: 15px;
 	color: #fff;
 }
-.navbar-logo:hover{
+.navbar-brand:hover{
 	font-weight: bold;
 	color: white;
 }
