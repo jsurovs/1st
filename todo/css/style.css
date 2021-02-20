@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Brygada+1918:wght@400;500;700&family=Roboto+Slab:wght@400;500;700&display=swap');
-@import 'sweetalert/src/sweetalert2.scss';
 
 *{
     margin: 0;
@@ -28,13 +27,14 @@
 	padding-right: 0px;
 }
 
-.nav-tabs li button{
+.nav-tabs .nav-link{
 	width: 130px;
 	margin-left: 10px;
+	background: linear-gradient(#A020F0, #9198e5 100%);
 }
 
-.nav-tabs li button:hover{
-	background: #red;
+.nav-tabs .nav-link:hover{
+	background: red;
 	transition: all 0.3s ease;
 	opacity: 0.6;
 	color: white;
@@ -65,7 +65,7 @@
   }
 
 .dataInput input{
-    width: 85%;
+    width: 100%;
     height: 100%;
     outline: none;
     border-radius: 3px;
@@ -114,13 +114,22 @@
 	padding-left: 0px;
   }
 
+.wrapper .CompleteList{
+	min-height: 50px;
+    max-height: 500px;
+	max-width: auto;
+    overflow-y: auto;
+	padding-left: 0px;
+}
+
 .ToDoList li{
     position: relative;
     list-style: none;
     height: 45px;
     line-height: 45px;
     margin-bottom: 8px;
-    background: #f2f2f2;
+    background: lightgrey;
+	font-weight: 600;
     border-radius: 3px;
     padding: 0 15px;
     cursor: default;
@@ -141,6 +150,23 @@
 
 .ToDoList li:hover .icon{
     right: 0px;
+  }
+
+.ToDoList li .icon2{
+    position: absolute;
+    right: -95px;
+    background: green;
+    width: 45px;
+    text-align: center;
+    color: #fff;
+    border-radius: 0 3px 3px 0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+.ToDoList li:hover .icon2{
+    right: 47px;
+	border-radius: 0 3px 3px 0;
   }
 
 .wrapper .footer{

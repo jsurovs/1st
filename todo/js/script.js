@@ -30,7 +30,7 @@ addBtn.onclick = ()=>{
 	localStorage.setItem("New Todo", JSON.stringify(listArray));
 	showTasks();
 	$("input:text").focus();
-	addBtn.classList.remove("active"); //unactive the add button once the task added
+	addBtn.classList.remove("active");
 }
 
 function showTasks(){
@@ -51,7 +51,7 @@ function showTasks(){
 	
 	let newLiTag = "";
 	listArray.forEach((element, index) => {
-		newLiTag += `<li>${element}<span class="icon" onclick="deleteTask(${index})"><i class="fas fa-trash"></i></span></li>`;
+		newLiTag += `<li>${element}<span class="icon" onclick="deleteTask(${index})"><i class="fas fa-trash"></i></span><span class="icon2" onclick="setfinish(${index})"><i class="fas fa-check-circle"></i></span></li>`;
 	});
 	
 	todoList.innerHTML = newLiTag;
@@ -69,7 +69,9 @@ function deleteTask(index){
 	confirmButtonColor: '#3085d6',
 	cancelButtonColor: '#d33',
 	confirmButtonText: 'Yes, delete it!',
-	showLoaderOnConfirm: true
+	showLoaderOnConfirm: true,
+		preConfirm: () => {
+    return }
 	}).then((result) => {
   		if (result.isConfirmed) {
 			let getLocalStorageData = localStorage.getItem("New Todo");
@@ -89,7 +91,27 @@ function deleteTask(index){
 //#####################################
 
 deleteAllBtn.onclick = ()=>{
-	listArray = [];
-	localStorage.setItem("New Todo", JSON.stringify(listArray));
-	showTasks();
+    	Swal.fire({
+	title: 'Are you sure?',
+	text: "You won't be able to revert this!",
+	icon: 'warning',
+	showCancelButton: true,
+	confirmButtonColor: '#3085d6',
+	cancelButtonColor: '#d33',
+	confirmButtonText: 'Yes, delete it!',
+	showLoaderOnConfirm: true,
+		preConfirm: () => {
+    return }
+	}).then((result) => {
+  		if (result.isConfirmed) {
+	       listArray = [];
+	       localStorage.setItem("New Todo", JSON.stringify(listArray));
+	       showTasks();
+        Swal.fire(
+		'Deleted!',
+		'Your file has been deleted.',
+		'success'
+		)
+  		}
+	})
 }
