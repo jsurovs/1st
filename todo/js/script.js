@@ -79,11 +79,11 @@ function showTasks(){
 function completeTheTask(index){
 	let getLocalStorageData = localStorage.getItem("LS-Completed");
 		if(getLocalStorageData == null){
-			listArray = [];
+			targetArray = [];
 		}else{
-			listArray = JSON.parse(getLocalStorageData);
+			targetArray = JSON.parse(getLocalStorageData);
 		}
-	listArray.push(index);
+	targetArray.push(index);
 	localStorage.setItem("LS-Completed", JSON.stringify(listArray));
 	listArray.splice(index, 1);
 }
