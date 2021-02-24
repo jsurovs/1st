@@ -1,6 +1,7 @@
 const inputBox = document.querySelector(".dataInput input");
 const addBtn = document.querySelector(".dataInput button");
 const todoList = document.querySelector(".ToDoList");
+const completeList = document.querySelector(".CompleteList");
 const deleteAllBtn = document.querySelector(".footer button");
 
 //################## input box validation ##################
@@ -65,27 +66,40 @@ function showTasks(){
 		deleteAllBtn.classList.remove("active");
 	}
 	
-	let newLiTag = "";
+	let newTodo = "";
 	listArray.forEach((element, index) => {
-		newLiTag += `<li>${element}<span class="icon" onclick="deleteTask(${index})"><i class="fas fa-trash"></i></span><span class="icon2" onclick="completeTheTask(${index})"><i class="fas fa-check-circle"></i></span></li>`;
+		newTodo += `<li>${element}<span class="icon" onclick="deleteTask(${index})"><i class="fas fa-trash"></i></span><span class="icon2" onclick="completeTheTask(${index})"><i class="fas fa-check-circle"></i></span></li>`;
 	});
 	
-	todoList.innerHTML = newLiTag;
+	todoList.innerHTML = newTodo;
 	inputBox.value = "";
 	}
 
 //################## set completed task status ##################
 
-function completeTheTask(index){
+
+function completeTheTask(value) {
 	let getLocalStorageData = localStorage.getItem("LS-Completed");
 		if(getLocalStorageData == null){
 			targetArray = [];
 		}else{
 			targetArray = JSON.parse(getLocalStorageData);
-		}
-	targetArray.push(index);
-	localStorage.setItem("LS-Completed", JSON.stringify(listArray));
+		};
+	var value = JSON.parse(localStorage.getItem("LS-ToDo"));
+  	targetArray.unshift(value);
+	localStorage.setItem("LS-Completed", JSON.stringify(targetArray));
+//	return completeList;
+	deleteTask2();
+	completeList.innerHTML = localStorage.getItem("LS-Completed");
+//	document.getElementById("CompleteList").innerHTML = localStorage.getItem("LS-Completed");
+	}
+
+function deleteTask2(index){
+	let getLocalStorageData = localStorage.getItem("LS-ToDo");
+	listArray = JSON.parse(getLocalStorageData);
 	listArray.splice(index, 1);
+	localStorage.setItem("LS-ToDo", JSON.stringify(listArray));
+	showTasks();
 }
 
 //################## delete task function with swal validation ##################
