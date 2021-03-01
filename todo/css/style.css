@@ -1,22 +1,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Brygada+1918:wght@400;500;700&family=Roboto+Slab:wght@400;500;700&display=swap');
-
+@-ms-viewport {width: device-width};
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
-
-html{
-	height: 100%
+i {
+	margin-right: 10px;
 }
-  body{
-	  font-family: 'Roboto Slab', serif;
-      width: 100%;
-      height: 100vh;
-      padding: 10px;
-      background: linear-gradient(#A020F0, #9198e5);
+html{
+	font-family: 'Roboto Slab', serif;
+	height: 100%;
+}
+body{
+	font-family: 'Roboto Slab', serif;
+    width: 100%;
+    height: 100vh;
+    padding: 10px;
+    background: linear-gradient(#A020F0, #9198e5);
   }
-
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+nav{
+	min-height: 56px;
+}
+.navbar{
+	font-size: 16px;
+}
 .nav-tabs{
 	height: 56px;
 	width: 100%;
@@ -24,18 +37,16 @@ html{
 	background: white;
 	margin: 8px auto;
 }
-
 .tabmenu-col{
 	padding-left: 0px;
 	padding-right: 0px;
 }
-
 .nav-tabs .nav-link{
 	width: 130px;
 	margin-left: 10px;
+	color: white;
 	background: linear-gradient(#A020F0, #9198e5 100%);
 }
-
 .nav-tabs .nav-link:hover{
 	background: red;
 	transition: all 0.3s ease;
@@ -43,7 +54,6 @@ html{
 	color: white;
 	font-weight: bold;
 }
-
 .wrapper{
     background: #fff;
     max-width: 600px;
@@ -53,20 +63,17 @@ html{
     border-radius: 5px;
     box-shadow: 0px 10px 15px rgba(0,0,0,0.1);
   }
-
 .wrapper header{
     font-size: 30px;
     font-weight: 600;
 	text-align: center;
   }
-
 .wrapper .dataInput{
     margin: 20px 0;
     width: 100%;
     display: flex;
     height: 45px;
   }
-
 .dataInput input{
     width: 100%;
     height: 100%;
@@ -77,11 +84,9 @@ html{
     padding-left: 15px;
     transition: all 0.3s ease;
   }
-
 .dataInput input:focus{
     border-color: #8E49E8;
   }
-
 .dataInput button{
     width: 50px;
     height: 100%;
@@ -97,18 +102,15 @@ html{
     pointer-events: none;
     transition: all 0.3s ease;
   }
-
 .dataInput button:hover,
 .footer button:hover{
     background: #721ce3;
     opacity: 1.5;
   }
-
 .dataInput button.active{
     opacity: 1;
     pointer-events: auto;
   }
-
 .wrapper .ToDoList{
 	min-height: 50px;
     max-height: 500px;
@@ -116,7 +118,6 @@ html{
     overflow-y: auto;
 	padding-left: 0px;
   }
-
 .wrapper .CompleteList{
 	min-height: 50px;
     max-height: 500px;
@@ -124,7 +125,6 @@ html{
     overflow-y: auto;
 	padding-left: 0px;
 }
-
 .ToDoList li{
     position: relative;
     list-style: none;
@@ -138,7 +138,6 @@ html{
     cursor: default;
     overflow: hidden;
   }
-
 .CompleteList {
 	position: relative;
     list-style: none;
@@ -152,7 +151,6 @@ html{
     cursor: default;
     overflow: hidden;
 }
-
 .ToDoList li .icon{
     position: absolute;
     right: -45px;
@@ -164,11 +162,9 @@ html{
     cursor: pointer;
     transition: all 0.2s ease;
   }
-
 .ToDoList li:hover .icon{
     right: 0px;
   }
-
 .ToDoList li .icon2{
     position: absolute;
     right: -95px;
@@ -180,12 +176,10 @@ html{
     cursor: pointer;
     transition: all 0.2s ease;
   }
-
 .ToDoList li:hover .icon2{
     right: 47px;
 	border-radius: 0 3px 3px 0;
   }
-
 .wrapper .footer{
     display: flex;
     width: 100%;
@@ -193,17 +187,14 @@ html{
     align-items: center;
     justify-content: space-between;
   }
-
 .fas{
 	margin-right: 5px;
 }
-
 .footer{
       display: flex;
       flex-direction: column;
 	  font-weight: bold;
   }
-
 .footer button{
 	margin: 10px;
     padding: 10px;
@@ -222,12 +213,10 @@ html{
     pointer-events: none;
     transition: all 0.3s ease;
   }
-
 .footer button.active{
     opacity: 1;
     pointer-events: auto;
   }
-
 .footer button:hover{
 	  background: red;
   }

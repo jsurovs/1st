@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Brygada+1918:wght@400;500;700&family=Roboto+Slab:wght@400;500;700&display=swap');
+@-ms-viewport {width: device-width;}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+i {
+	margin-right: 10px;
+}
+.nav .nav-item{
+	display: inline-flex;
+	flex: 1;
+	width: 100%;
+}
+.nav-item .nav-link{
+	width: 100%
+}
+html{
+	height: 100%;
+	font-family: 'Roboto Slab', serif !important;
+}
+body{
+	width: 100%;
+    height: 100vh;
+    padding: 10px
+}
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.page-header-title{
+	padding: 8px 0;
+	margin: auto;
+}
+.input-data-block{
+	padding: 0;
+}
+.navbar{
+	font-size: 16px;
+}
+nav{
+	min-height: 56px;
+}
+.nav .nav-link{
+	height: 56px;
+}
+.nav .nav-link:hover{
+	background: red;
+	transition: all 0.3s ease;
+	opacity: 0.6;
+	color: white;
+	font-weight: bold;
+}
+.nav-link#gross-tab{
+	width: auto;
+}
+.nav-link#neto-tab{
+	width: auto;
+}
+.page-title{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	background-color: #009C4C;
+	color: white;
+	font-size: 25px;
+	text-align: center;
+	border-bottom: solid;
+	min-height: 56px;
+}
+.param{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;	
+	font-weight: bold;
+	min-height: 60px;
+}
+.fistparam{
+	margin-top: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;	
+	font-weight: bold;
+	min-height: 55px;
+}
+.lastparam{
+	margin-top: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;	
+	font-weight: bold;
+	min-height: 55px;
+}
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.form-control{
+  	min-height: 40px;
+}
+.btn{
+  	height: 40px;
+  	min-width: 135px;
+	font-weight: 500;
+}
+.resultsBlockClass{
+	height: auto;
+}
+.resultExpensesSum{
+	font-weight: bold;
+	text-align: center;
+	color: green;
+}
+.resultGross{
+	font-weight: bold;
+	color: red;
+	text-align: center;
+}
+
+ ----- RESPONSIVE -----
+@media (max-width: 768px){
+  .result-title{
+  margin-top: 20px;
+  }
+  .btn{
+    margin-top: 10px;
+    height: 55px;
+	font-size: 25px;
+  }
+}

@@ -1,283 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!--META-->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<meta name="description" content="Tax calculator">
-	<meta name="author" content="FD-6">
-	<meta name="keywords" content="TAX, HTMS, CSS, SCSS, Bootstrap" />
-	<title>Nodokļu kalkulātors</title>
-
-<!--BOOTSTRAP 4.3.1-->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css">
-	<link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/navbars/">
-<!--BOOTSTRAP 5.0.0-->  
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-<!--CSS-->
-	<link rel="stylesheet" href="../tax-calculator/assets/css/reset.css">
-	<link rel="stylesheet" href="../tax-calculator/assets/css/style.css">
-	<link rel="stylesheet" href="../tax-calculator/assets/css/navbar.css">
-<!--ICONS-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>TaskBoard App</title>
+	
+	<!--BOOTSTRAP -->
+    <link href="../1st/assets/bs/v4.3.1/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../1st/assets/bs/v4.5.3/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../1st/assets/bs/v5.0.0/css/bootstrap.min.css" rel="stylesheet">
+	
+    <!--ICONS-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	
+	<!--  FONTS  -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../1st/todo/css/style.css">
+	
+	
+	<!--  SWEETALERT -->
+	<link rel="stylesheet" href="../1st/assets/js/sweetalert/dist/sweetalert2.min.css">
+	<link rel="stylesheet" href="../1st/assets/js/sweetalert/dist/sweetalert2.css">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-mainbg bg">
-        <a class="navbar-brand" href="#">Navbar</a>
-  		<button class="navbar-toggler" 
-				type="button" 
-				data-toggle="collapse" 
-				data-target="#navbarSupportedContent" 
-				aria-controls="navbarSupportedContent" 
-				aria-expanded="false" 
-				aria-label="Toggle navigation">
-    			<span class="navbar-toggler-icon">
-				<i class="fas fa-chevron-circle-down"></i>
-				</span>
-  		</button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto" id="navTabs">
-                <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
-                <li class="nav-item active">
-                    <a class="nav-link" href="#tax" data-toggle="tab"><i class="fas fa-tachometer-alt"></i>Tax calculator</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../tax-calculator/todo/index.html" data-toggle="tab"><i class="far fa-address-book"></i>Menu 1</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#ccc" data-toggle="tab"><i class="far fa-clone"></i>Menu 2</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#ddd" data-toggle="tab"><i class="far fa-calendar-alt"></i>Menu 3</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0);" data-toggle="tab"><i class="far fa-chart-bar"></i>Menu4</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0);" data-toggle="tab"><i class="far fa-copy"></i>Menu 5</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-	<div class="tab-content" id="tab">
-		<div class="tab-pane fade in active" id="tax">
-		<div class="col-md-12"><h1 class="page-title">Laipni lūdzam darba algas nodokļu kalkulātorā</h1></div>
-		<div class="container">
-		<div class="row justify-content-center">
-			<div id="params" class="col-md-8">
-				<div class="col-md-12">
-					<div class="col-md-12"><h1 class="page-title">Datu ievade</h1></div>
-				</div>
-				<div class="row">
-					<div class="col-md-12 ml-auto mr-auto">
-							<ul class=" nav nav-tabs nav-pills justify-content-center" id="nav-tab" role="tablist">
-								<li class="nav-item" role="presentation">
-									<button class="nav-link active" id="gross-tab" data-bs-toggle="tab" data-bs-target="#gross-title" type="button" role="tab" aria-controls="gross-title" aria-selected="true">
-									<i class="material-icons">euro</i>Bruto > Neto
-									</button>
-								</li>
-								<li class="nav-item" role="presentation">
-									<button class="nav-link" id="neto-tab" data-bs-toggle="tab" data-bs-target="#neto-title" type="button" role="tab" aria-controls="neto-title" aria-selected="false">
-									<i class="material-icons">euro</i>Neto > Bruto
-									</button>
-								</li>
+	<nav class="navbar navbar-expand-lg navbar-dark  bg-dark">
+	  <div class="container-fluid">
+		<a class="navbar-brand" href="index.html"><i class="fas fa-tasks"></i></a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		  <span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+		  <ul class="navbar-nav">
+			<li class="nav-item">
+			  <a class="nav-link active" aria-current="page" disabled href="#">TaskBoard</a>
+			</li>
+			<li class="nav-item">
+			  <a class="nav-link active" aria-current="page" disabled href="../1st/tax/index.html">Tax calculation</a>
+			</li>
+		  </ul>
+		</div>
+	  </div>
+	</nav>
+	<div class="container">
+		<div class="row tabmenu">
+			<div class="tabmenu-col col-md-12 ml-auto mr-auto">
+				<ul class="nav nav-tabs nav-pills justify-content-center" id="nav-tab" role="tablist">
+					<li class="nav-item" role="presentation">
+						<button class="nav-link active" id="to-do-tab" data-bs-toggle="tab" data-bs-target="#to-do-items" type="button" role="tab" aria-controls="to-do-items" aria-selected="true">To Do Items</button>
+					</li>
+					<li class="nav-item" role="presentation">
+						<button class="nav-link" id="all-tab" data-bs-toggle="tab" data-bs-target="#all-items" type="button" role="tab" aria-controls="all-items" aria-selected="false">All tasks</button>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="tab-content" id="myTabContent">
+					<div id="to-do-items" class="tab-pane fade show active" role="tabpanel" aria-labelledby="to-do-tab">
+						<div class="wrapper col-md">
+							<header>My To Do App</header>
+							<div class="dataInput">
+								<input type="text" maxlength="45" placeholder="Add your task" onkeydown="keyCode(event)">
+								<button><i class="fas fa-plus-circle"></i></button>
+        					</div>
+							<ul class="ToDoList">
+							<!-- DATA FROM LOCAL STORAGE -->
 							</ul>
-					</div>
-				</div>
-				<div class="row">
-					<div class="fistparam col-md-8">
-						<div class="tab-content" id="myTabContent">
-							<div id="gross-title" class="tab-pane fade show active" role="tabpanel" aria-labelledby="gross-tab">
-								<span class="param-title">
-									<span class="param-number">1.</span>
-									<span id="gross-title">Ievadie bruto darba algu (alga pirms nodokļiem)</span>
-								</span>
-							</div>
-							<div id="neto-title" class="tab-pane fade" role="tabpanel" aria-labelledby="neto-tab">
-								<span class="param-title">
-									<span class="param-number">1.</span>
-									<span id="neto-title">Ievadie neto darba algu (alga pēc nodokļiem)</span>
-								</span>
+							<div class="footer text-center">
+								<span><i class="fa fa-tasks" aria-hidden="true"></i> You have scheduled <span class="pendingTasks" style="color:red"></span> tasks <i class="fa fa-tasks" aria-hidden="true"></i></span>
+								<button type="button" class="btn-clear-all" onclick="deleteAllBtn()">
+								<i class="fas fa-trash-alt"></i>
+								Clear all</button>
 							</div>
 						</div>
 					</div>
-					<div class="fistparam col-md-4">
-						<input id="gross-amount" type="number" class="grossInput form-control" value="0.00" placeholder="0.00">
+					<div id="all-items" class="tab-pane fade show" role="tabpanel" aria-labelledby="all-tab">
+						<div class="wrapper col-md">
+							<div>
+								<header>Completed</header>
+							</div>
+							<ul class="CompleteList" id="CompleteListData">
+							<!-- DATA FROM LOCAL STORAGE -->
+							</ul>
+						</div>
 					</div>
-				</div>
-				<div class="row">
-					<div class="param col-md-6">
-						<span class="param-title">
-							<span class="number">2.</span>
-							<span>Izvēlaties sociālo iemaksu likmi</span>
-						</span>
-					</div>
-					<div class="col-md-6">
-						<select class="form-select" id="socErate">
-							<option value="0.1050" selected>Pamatlikme 10.50%</option>
-							<option value="0.0925">Likme pensionāram 9.25%</option>
-							<option value="0.0976">Likme I un II gr.inv., spec. pens. saņēmējiem 9.76%</option>
-							<option value="0.0887">Likme ieslodzītājam 8.87%</option>
-							<option value="0.0767">Likme ieslodzītājam pensionāram 7.67%</option>
-						</select>
-					</div>
-				</div>
-				<div class="row">
-					<div class="param col-md-8">
-						<span class="param-title">
-							<span class="number">3.</span>
-							<span>Iesniegta nodokļu grāmatiņa pie darba devēja</span>
-						</span>
-					</div>
-					<div class="col-md-4">
-						<select class="taxBook form-select" onchange="taxBookSubmitted()">
-							<option value="20">Jā</option>
-							<option value="23" selected>Nē</option>
-						</select>
-					</div>
-				</div>
-				<div class="row">
-					<div class="param col-md-8">
-						<span class="param-title">
-							<span class="number">4.</span>
-							<span>Valsts noteiktais neapliekamais minimums</span>
-						</span>
-					</div>
-					<div class="col-md-4">
-						<input type="number" class="form-control input-lg" value="0.00" id="neapl">
-					</div>
-				</div>
-				<div class="row">
-					<div class="param col-md-8">
-						<span class="param-title">
-							<span class="number">5.</span>
-							<span>Apgādībā esošo personu skaits</span>
-						</span>
-					</div>
-					<div class="col-md-4">
-						<select class="dependents form-select">
-							<option value="0" selected disabled>Izvelne</option>
-							<option value="0">0 (0€)</option>
-							<option value="1">1 (250€)</option>
-							<option value="2">2 (500€)</option>
-							<option value="3">3 (750€)</option>
-							<option value="4">4 (1000€)</option>
-							<option value="5">5 (1250€)</option>
-							<option value="6">6 (1500€)</option>
-							<option value="7">7 (1750€)</option>
-							<option value="8">8 (2000€)</option>
-							<option value="9">7 (2250€)</option>
-						</select>
-					</div>
-				</div>
-				<div class="row">
-					<div class="param col-md-8">
-						<span class="param-title">
-							<span class="number">6.</span>
-							<span>Iedzīvotāju ienākuma nodoklis</span>
-						</span>
-					</div>
-					<div class="col-md-4">
-						<input type="text" id="incomeRate" class="incomeRate form-control input-lg" disabled style="background-color: #e9ecef;" value="23.00" placeholder="23.00%">
-					</div>
-				</div>
-				<!--Submit button-->
-				<div class="d-md-flex d-grid justify-content-md-end">
-					<button type="button" onclick="submitInput()" class="btn btn-primary"><i class="fa fa-calculator"></i>Aprēķināt</button>
-				</div>
-			</div>
-			<div id="resultsBlock" class="resultsBlockClass col-md-4" style="visibility: hidden">
-				<div class="result-title col-md-12">
-					<h1 class="page-title">Rezultāts</h1>
-				</div>
-				<div class="param col-md-12">
-					<span class="param-title">
-						<span class="number">7.</span>
-						<span>DŅ Sociālais nodoklis</span>
-					</span>
-					<p class="resultSocErate form-control" type="text" readonly></p>
-				</div>
-				<div class="param col-md-12">
-					<span class="param-title">
-						<span class="number">8.</span>
-						<span>DD Sociālais nodoklis</span>
-					</span>
-					<p class="resultSocCrate form-control" type="text" readonly></p>
-				</div>
-				<div class="param col-md-12">
-					<span class="param-title">
-						<span class="number">9.</span>
-						<span>Atvieglojumi par apgādājamiem</span>
-					</span>
-					<p class="resultDependents form-control" type="text" readonly></p>
-				</div>
-				<div class="param col-md-12">
-					<span class="param-title">
-						<span class="number">10.</span>
-						<span>Iedzīvotāju ienākuma nodoklis</span>
-					</span>
-					<p class="resultIncomeTax form-control" type="text" readonly></p>
-				</div>
-				<div class="param col-md-12">
-					<span class="param-title">
-						<span class="number">11.</span>
-						<span>Darba alga</span>
-					</span>
-					<p class="resultGross form-control" type="text" readonly></p>
-				</div>
-				<div class="param col-md-12">
-					<span class="param-title">
-						<span class="number">12.</span>
-						<span>Uzņēmējdarbības riska valsts nodeva</span>
-					</span>
-					<input type="text" class="resultBusinessRiskFee form-control" value="0.36" readonly>
-				</div>
-				<div class="lastparam col-md-12">
-					<span class="param-title">
-						<span class="number">13.</span>
-						<span>Darba devēja kopējie izdevumi</span>
-					</span>
-					<p class="resultExpensesSum form-control" type="text" readonly></p>
 				</div>
 			</div>
 		</div>
 	</div>
-		</div>
-		<div class="tab-pane fade in active" id="bbb">2</div>
-		<div class="tab-pane fade in active" id="ccc">3</div>
-		<div class="tab-pane fade in active" id="ddd">4</div>
-	</div>
-<!--JS BOOTSTRAP ENGINE-->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	
-<!--SCRIPTS-->
-    <script type="text/javascript" src="../tax-calculator/assets/js/navbar.js"></script>
-	<script type="text/javascript" src="../tax-calculator/assets/js/script.js"></script>
-	<script type="text/javascript" src="../tax-calculator/assets/js/hide-result-block.js"></script>
-<!--JS BOOTSTRAP ENGINE-->
-		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
-<!--JS BOOTSTRAP ENGINE-->
-		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-		<script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <script src="../1st/todo/js/script.js"></script>
+	<script src="../1st/assets/js/sweetalert/dist/sweetalert2.all.js"></script>
 	
-	<script>
-	$(document).ready(function(){
-  $(".navTabs a").click(function(){
-    $(this).tab('show');
-  });
-  $('.navTabs a').on('shown.bs.tab', function(event){
-    var x = $(event.target).text();         // active tab
-    var y = $(event.relatedTarget).text();  // previous tab
-    $(".act span").text(x);
-    $(".prev span").text(y);
-  });
-});
-</script>
+	<script src="../1st/assets/jquery/jquery-3.4.1.min.js"></script>
+	<script src="../1st/assets/jquery/jquery-3.5.1.min.js"></script>
+	<script src="../1st/assets/jquery/jquery-3.5.1.slim.min.js"></script>
+	
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+	
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
+		
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
 </body>
 </html>
