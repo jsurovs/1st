@@ -78,24 +78,21 @@ function showTasks(){
 //################## set completed task status ##################
 
 
-function completeTheTask(index, value) {
+function completeTheTask(index) {
 	let getLocalStorageData = localStorage.getItem("LS-Completed");
 		if(getLocalStorageData == null){
-			listArray2 = [];
+			targetArray = [];
 		}else{
-			listArray2 = JSON.parse(getLocalStorageData);
+			targetArray = JSON.parse(getLocalStorageData);
 		};
-	
-	let getLocalStorageData2 = localStorage.getItem("LS-ToDo");
-	listArray = JSON.parse(getLocalStorageData2);
-	index = localStorage.setItem("LS-ToDo", JSON.stringify(listArray));
-
-  	listArray2.push(index);
-	localStorage.setItem("LS-Completed", JSON.stringify(listArray2));
-	
-	$("#CompleteListData").append("<li>"+index+"</li>");
+	var index = JSON.parse(localStorage.getItem("LS-ToDo"));
+  	targetArray.unshift(index);
+	localStorage.setItem("LS-Completed", JSON.stringify(targetArray));
+//	return completeList;
 	deleteTaskAfterComplete();
-}
+//	completeList.innerHTML = localStorage.getItem("LS-Completed");
+	document.getElementById("CompleteList").innerHTML = localStorage.setItem("LS-Completed", JSON.stringify(targetArray));
+	}
 
 function deleteTaskAfterComplete(index){
 	let getLocalStorageData = localStorage.getItem("LS-ToDo");

@@ -6,12 +6,15 @@
     box-sizing: border-box;
   }
 
+html{
+	height: 100%
+}
   body{
 	  font-family: 'Roboto Slab', serif;
       width: 100%;
       height: 100vh;
-      padding: 10px;;
-      background: linear-gradient(#A020F0, #9198e5 100%);
+      padding: 10px;
+      background: linear-gradient(#A020F0, #9198e5);
   }
 
 .nav-tabs{
