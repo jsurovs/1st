@@ -40,6 +40,9 @@ html {
 .navbar{
 	font-size: 16px;
 }
+.tab-menu{
+	padding: 0;
+}
 nav{
 	min-height: 56px;
 }
@@ -106,6 +109,7 @@ nav{
   	height: 40px;
   	min-width: 135px;
 	font-weight: 500;
+	margin: 15px 0;
 }
 .resultsBlockClass{
 	height: auto;
