@@ -6,6 +6,11 @@ const deleteAllBtn = document.querySelector(".footer button");
 
 //################## input box validation ##################
 
+var codes = {
+	"1" : "#pending",
+    "2" : "#completed",
+}
+
 inputBox.onkeyup = ()=>{
 	let userEnteredValue = inputBox.value;
 	if(userEnteredValue.trim() != 0){
@@ -79,24 +84,27 @@ function showTasks(){
 
 
 function completeTheTask(index, value) {
-	let getLocalStorageData = localStorage.getItem("LS-Completed");
-		if(getLocalStorageData == null){
-			listArray2 = [];
-		}else{
-			listArray2 = JSON.parse(getLocalStorageData);
-		};
-	
 	let getLocalStorageData2 = localStorage.getItem("LS-ToDo");
 	listArray = JSON.parse(getLocalStorageData2);
 	index = localStorage.setItem("LS-ToDo", JSON.stringify(listArray));
 
-  	listArray2.push(index);
+  	listArray.push(index);
 	localStorage.setItem("LS-Completed", JSON.stringify(listArray2));
 	
-	$("#CompleteListData").append("<li>"+index+"</li>");
 	deleteTaskAfterComplete();
 }
 
+//$(document).ready(function() {
+//  $('#one .draggable').live('click', function() {
+//    // move from "one" to "two"
+//    $(this).appendTo("#two");
+//  });
+//
+//  $('#two .draggable').live('click', function() {
+//    // move from "two" to "one"
+//    $(this).appendTo("#one");
+//  });
+//});
 function deleteTaskAfterComplete(index){
 	let getLocalStorageData = localStorage.getItem("LS-ToDo");
 	listArray = JSON.parse(getLocalStorageData);

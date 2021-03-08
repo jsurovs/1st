@@ -16,6 +16,15 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	
+	<!--FAVICONS-->
+	<link rel="apple-touch-icon" sizes="180x180" href="../1st/assets/favicon/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="../1st/assets/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="../1st/assets/favicon/favicon-16x16.png">
+	<link rel="manifest" href="../1st/assets/favicon/site.webmanifest">
+	<link rel="mask-icon" href="../1st/assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
+	<meta name="msapplication-TileColor" content="#da532c">
+	<meta name="theme-color" content="#ffffff">
+	
 	<!--  FONTS  -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css">
 
@@ -52,10 +61,10 @@
 			<div class="tabmenu-col col-md-12 ml-auto mr-auto">
 				<ul class="nav nav-tabs nav-pills justify-content-center" id="nav-tab" role="tablist">
 					<li class="nav-item" role="presentation">
-						<button class="nav-link active" id="to-do-tab" data-bs-toggle="tab" data-bs-target="#to-do-items" type="button" role="tab" aria-controls="to-do-items" aria-selected="true">To Do Items</button>
+						<button class="nav-link active" id="to-do-tab" data-bs-toggle="tab" data-bs-target="#to-do-items" type="button" role="tab" aria-controls="to-do-items" aria-selected="true">To Do </button>
 					</li>
 					<li class="nav-item" role="presentation">
-						<button class="nav-link" id="all-tab" data-bs-toggle="tab" data-bs-target="#all-items" type="button" role="tab" aria-controls="all-items" aria-selected="false">All tasks</button>
+						<button class="nav-link" id="all-tab" data-bs-toggle="tab" data-bs-target="#all-items" type="button" role="tab" aria-controls="all-items" aria-selected="false">Completed</button>
 					</li>
 				</ul>
 			</div>
@@ -70,7 +79,7 @@
 								<input type="text" maxlength="45" placeholder="Add your task" onkeydown="keyCode(event)">
 								<button><i class="fas fa-plus-circle"></i></button>
         					</div>
-							<ul class="ToDoList">
+							<ul class="ToDoList" id="pending">
 							<!-- DATA FROM LOCAL STORAGE -->
 							</ul>
 							<div class="footer text-center">
@@ -86,7 +95,7 @@
 							<div>
 								<header>Completed</header>
 							</div>
-							<ul class="CompleteList" id="CompleteListData">
+							<ul class="CompleteList" id="completed">
 							<!-- DATA FROM LOCAL STORAGE -->
 							</ul>
 						</div>
@@ -96,7 +105,9 @@
 		</div>
 	</div>
 	
+	<div style="clear:both;"></div>
     <script src="../1st/todo/js/script.js"></script>
+	<script src="../1st/todo/js/script2.js"></script>
 	<script src="../1st/assets/js/sweetalert/dist/sweetalert2.all.js"></script>
 	
 	<script src="../1st/assets/jquery/jquery-3.4.1.min.js"></script>
