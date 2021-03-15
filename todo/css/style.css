@@ -88,7 +88,7 @@ nav{
     border-color: #8E49E8;
   }
 .dataInput button{
-    width: 190px;
+    min-width: 190px;
     height: 100%;
     border: none;
     color: #fff;
