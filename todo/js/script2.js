@@ -1,194 +1,81 @@
-var todo = todo || {},
-	data = JSON.parse(localStorage.getItem("todoData"));
+const inputBox = document.querySelector(".dataInput input");
+const addBtn = document.querySelector(".dataInput button");
+const todoList = document.querySelector(".ToDoList");
+const completeList = document.querySelector(".CompleteList");
+const deleteAllBtn = document.querySelector(".footer button");
+const filterOption = document.querySelector(".filter");
 
-data = data || {};
+addBtn.addEventListener("click", addTodo)
+todoList.addEventListener("click", deleteCheck)
+filterOption.addEventListener("click", filterTodo)
 
-(function(todo, data, $) {
-	var codes = {
-		"1" : "#pending",
-		"2" : "#completed"
-	};
-	
-	todo.init = function(options){
-		options = options || {};
-        options = $.extend({}, defaults, options);
+function addBtn(event) {
+    event.preventDefault();
+    const todoDiv = document.createElement('div');
+    todoDiv.classList.add('todo');
+    const newTodo = document.createElement('li');
+    newTodo.innerText = todoInput.value;
+    newTodo.classList.add('todo_item');
+    todoDiv.appendChild(newTodo);
+    if(todoInput.value === ""){
+        return null
+    }
+    //check mark BUTTON
+    const completedButton = document.createElement('button');
+    completedButton.innerHTML = '<i class="fas fa-check"></i>';
+    completedButton.classList.add('complete_btn')
+    todoDiv.appendChild(completedButton);
+    //delete BUTTON
+    const deleteButton = document.createElement('button');
+    deleteButton.innerHTML = '<i class="fas fa-trash"></i>';
+    deleteButton.classList.add('delete_btn')
+    todoDiv.appendChild(deleteButton);
+    //Append to Actual LIST
+    todoList.appendChild(todoDiv);
+    //Clear todo input VALUE
+    todoInput.value = ""
+}
 
-        $.each(data, function (index, params) {
-            generateElement(params);
+//DELETE & CHECK
+function deleteCheck(e) {
+    const item = e.target;
+    //DELETE ITEM
+    if (item.classList[0] === "delete_btn") {
+        const todo = item.parentElement;
+        //ANIMATION TRANSITION
+        todo.classList.add("fall")
+        todo.addEventListener('transitionend', function () {
+            todo.remove()
         })
-		
-	$.each(codes, function (index, value) {
-            $(value).droppable({
-                drop: function (event, ui) {
-                        var element = ui.helper,
-                            css_id = element.attr("id"),
-                            id = css_id.replace(options.taskId, ""),
-                            object = data[id];
-
-                            // Removing old element
-                            removeElement(object);
-
-                            // Changing object code
-                            object.code = index;
-
-                            // Generating new element
-                            generateElement(object);
-
-                            // Updating Local Storage
-                            data[id] = object;
-                            localStorage.setItem("todoData", JSON.stringify(data));
-
-                            // Hiding Delete Area
-                            $("#" + defaults.deleteDiv).hide();
-                    }
-            });
-        });
-
-        // Adding drop function to delete div
-        $("#" + options.deleteDiv).droppable({
-            drop: function(event, ui) {
-                var element = ui.helper,
-                    css_id = element.attr("id"),
-                    id = css_id.replace(options.taskId, ""),
-                    object = data[id];
-
-                // Removing old element
-                removeElement(object);
-
-                // Updating local storage
-                delete data[id];
-                localStorage.setItem("todoData", JSON.stringify(data));
-
-                // Hiding Delete Area
-                $("#" + defaults.deleteDiv).hide();
-            }
-        })
-
-    };
-
-    // Add Task
-    var generateElement = function(params){
-        var parent = $(codes[params.code]),
-            wrapper;
-
-        if (!parent) {
-            return;
+    }
+    //COMPLETE ITEM
+    if (item.classList[0] === "complete_btn") {
+        const todo = item.parentElement;
+        todo.classList.toggle("completedItem")
+    }
+}
+//FILTERING THE TASKS ACCORDING THE OPTION
+function filterTodo(e) {
+    const todos = todoList.childNodes;
+    for(let i = 1; i<todos.length; i++ ){
+        switch (e.target.value) {
+            case "all":
+                todos[i].style.display = "flex";
+                break;
+            case "completed":
+                if (todos[i].classList.contains('completedItem')) {
+                    todos[i].style.display = "flex";
+                } else {
+                    todos[i].style.display = "none";
+                }
+                break;
+            case "uncompleted":
+                if (!todos[i].classList.contains('completedItem')) {
+                    todos[i].style.display = "flex";
+                } else {
+                    todos[i].style.display = "none";
+                }
+                break;
         }
-
-        wrapper = $("<div />", {
-            "class" : defaults.todoTask,
-            "id" : defaults.taskId + params.id,
-            "data" : params.id
-        }).appendTo(parent);
-
-        $("<div />", {
-            "class" : defaults.todoHeader,
-            "text": params.title
-        }).appendTo(wrapper);
-
-        $("<div />", {
-            "class" : defaults.todoDate,
-            "text": params.date
-        }).appendTo(wrapper);
-
-        $("<div />", {
-            "class" : defaults.todoDescription,
-            "text": params.description
-        }).appendTo(wrapper);
-
-	    wrapper.draggable({
-            start: function() {
-                $("#" + defaults.deleteDiv).show();
-            },
-            stop: function() {
-                $("#" + defaults.deleteDiv).hide();
-            },
-	        revert: "invalid",
-	        revertDuration : 200
-        });
-
-    };
-
-    // Remove task
-    var removeElement = function (params) {
-        $("#" + defaults.taskId + params.id).remove();
-    };
-
-    todo.add = function() {
-        var inputs = $("#" + defaults.formId + " :input"),
-            errorMessage = "Title can not be empty",
-            id, title, description, date, tempData;
-
-        if (inputs.length !== 4) {
-            return;
-        }
-
-        title = inputs[0].value;
-        description = inputs[1].value;
-        date = inputs[2].value;
-
-        if (!title) {
-            generateDialog(errorMessage);
-            return;
-        }
-
-        id = new Date().getTime();
-
-        tempData = {
-            id : id,
-            code: "1",
-            title: title,
-            date: date,
-            description: description
-        };
-
-        // Saving element in local storage
-        data[id] = tempData;
-        localStorage.setItem("todoData", JSON.stringify(data));
-
-        // Generate Todo Element
-        generateElement(tempData);
-
-        // Reset Form
-        inputs[0].value = "";
-        inputs[1].value = "";
-        inputs[2].value = "";
-    };
-
-    var generateDialog = function (message) {
-        var responseId = "response-dialog",
-            title = "Message",
-            responseDialog = $("#" + responseId),
-            buttonOptions;
-
-        if (!responseDialog.length) {
-            responseDialog = $("<div />", {
-                    title: title,
-                    id: responseId
-            }).appendTo($("body"));
-        }
-
-        responseDialog.html(message);
-
-        buttonOptions = {
-            "Ok" : function () {
-                responseDialog.dialog("close");
-            }
-        };
-
-	    responseDialog.dialog({
-            autoOpen: true,
-            width: 400,
-            modal: true,
-            closeOnEscape: true,
-            buttons: buttonOptions
-        });
-    };
-
-    todo.clear = function () {
-        data = {};
-        localStorage.setItem("todoData", JSON.stringify(data));
-        $("." + defaults.todoTask).remove();
-    };
-
-})(todo, data, jQuery);
+    }
+} 

@@ -7,8 +7,6 @@
 	<title>TaskBoard App</title>
 	
 	<!--BOOTSTRAP -->
-    <link href="../1st/assets/bs/v4.3.1/css/bootstrap.min.css" rel="stylesheet">
-	<link href="../1st/assets/bs/v4.5.3/css/bootstrap.min.css" rel="stylesheet">
 	<link href="../1st/assets/bs/v5.0.0/css/bootstrap.min.css" rel="stylesheet">
 	
     <!--ICONS-->
@@ -75,16 +73,23 @@
 					<div id="to-do-items" class="tab-pane fade show active" role="tabpanel" aria-labelledby="to-do-tab">
 						<div class="wrapper col-md">
 							<header>My To Do App</header>
+							<div class="select dataInput">
+								<select name="todos" class="filter">
+									<option value="all">All</option>
+									<option value="pending">Pending</option>
+									<option value="completed">Completed</option>
+								</select>
+							</div>
 							<div class="dataInput">
 								<input type="text" maxlength="45" placeholder="Add your task" onkeydown="keyCode(event)">
-								<button><i class="fas fa-plus-circle"></i></button>
+								<button><i class="fas fa-plus-circle"> Add a task</i></button>
         					</div>
 							<ul class="ToDoList" id="pending">
 							<!-- DATA FROM LOCAL STORAGE -->
 							</ul>
 							<div class="footer text-center">
 								<span><i class="fa fa-tasks" aria-hidden="true"></i> You have scheduled <span class="pendingTasks" style="color:red"></span> tasks <i class="fa fa-tasks" aria-hidden="true"></i></span>
-								<button type="button" class="btn-clear-all" onclick="deleteAllBtn()">
+								<button type="button" class="btn-clear-all" onclick="buttonDeleteAll()">
 								<i class="fas fa-trash-alt"></i>
 								Clear all</button>
 							</div>
@@ -107,10 +112,8 @@
 	
 	<div style="clear:both;"></div>
     <script src="../1st/todo/js/script.js"></script>
-	<script src="../1st/todo/js/script2.js"></script>
 	<script src="../1st/assets/js/sweetalert/dist/sweetalert2.all.js"></script>
 	
-	<script src="../1st/assets/jquery/jquery-3.4.1.min.js"></script>
 	<script src="../1st/assets/jquery/jquery-3.5.1.min.js"></script>
 	<script src="../1st/assets/jquery/jquery-3.5.1.slim.min.js"></script>
 	

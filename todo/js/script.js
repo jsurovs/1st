@@ -1,22 +1,18 @@
-const inputBox = document.querySelector(".dataInput input");
-const addBtn = document.querySelector(".dataInput button");
+const todoInput = document.querySelector(".dataInput input");
+const todoButton = document.querySelector(".dataInput button");
 const todoList = document.querySelector(".ToDoList");
 const completeList = document.querySelector(".CompleteList");
-const deleteAllBtn = document.querySelector(".footer button");
+const buttonDeleteAll= document.querySelector(".footer button");
+const filterOption = document.querySelector(".filter");
 
 //################## input box validation ##################
 
-var codes = {
-	"1" : "#pending",
-    "2" : "#completed",
-}
-
-inputBox.onkeyup = ()=>{
-	let userEnteredValue = inputBox.value;
+todoInput.onkeyup = ()=>{
+	let userEnteredValue = todoInput.value;
 	if(userEnteredValue.trim() != 0){
-		addBtn.classList.add("active");
+		todoButton.classList.add("active");
 	}else{
-		addBtn.classList.remove("active");
+		todoButton.classList.remove("active");
 	}
 }
 
@@ -26,8 +22,8 @@ showTasks();
 
 //################## adding new element to local data storage ##################
 
-addBtn.onclick = ()=>{
-	let userEnteredValue = inputBox.value;
+todoButton.onclick = ()=>{
+	let userEnteredValue = todoInput.value;
 	let getLocalStorageData = localStorage.getItem("LS-ToDo");
 		if(getLocalStorageData == null){
 			listArray = [];
@@ -38,18 +34,18 @@ addBtn.onclick = ()=>{
 	localStorage.setItem("LS-ToDo", JSON.stringify(listArray));
 	showTasks();
 	$("input:text").focus();
-	addBtn.classList.remove("active");
+	todoButton.classList.remove("active");
 }
 
 function keyCode(event) {
 	var x = event.keyCode;
-	let userEnteredValue = inputBox.value;
-	if(x == 13 && inputBox.value != ""){	
+	let userEnteredValue = todoInput.value;
+	if(x == 13 && todoInput.value != ""){	
 		listArray.push(userEnteredValue);
 		localStorage.setItem("LS-ToDo", JSON.stringify(listArray));
 		showTasks();
 		$("input:text").focus();
-		addBtn.classList.remove("active");
+		todoButton.classList.remove("active");
 	}
 }
 
@@ -66,9 +62,9 @@ function showTasks(){
 	const pendingTasksNumb = document.querySelector(".pendingTasks");
 	pendingTasksNumb.textContent = listArray.length;
 	if(listArray.length > 0){
-		deleteAllBtn.classList.add("active");
+		buttonDeleteAll.classList.add("active");
 	}else{
-		deleteAllBtn.classList.remove("active");
+		buttonDeleteAll.classList.remove("active");
 	}
 	
 	let newTodo = "";
@@ -77,7 +73,7 @@ function showTasks(){
 	});
 	
 	todoList.innerHTML = newTodo;
-	inputBox.value = "";
+	todoInput.value = "";
 	}
 
 //################## set completed task status ##################
@@ -95,14 +91,12 @@ function completeTheTask(index, value) {
 }
 
 //$(document).ready(function() {
-//  $('#one .draggable').live('click', function() {
-//    // move from "one" to "two"
-//    $(this).appendTo("#two");
+//  $('#pending .draggable').live('click', function() {
+//    $(this).appendTo("#completed");
 //  });
 //
-//  $('#two .draggable').live('click', function() {
-//    // move from "two" to "one"
-//    $(this).appendTo("#one");
+//  $('#completed .draggable').live('click', function() {
+//    $(this).appendTo("#pending");
 //  });
 //});
 function deleteTaskAfterComplete(index){
@@ -145,7 +139,7 @@ function deleteTask(index){
 
 //################## delete all tasks function with swal validation ##################
 
-deleteAllBtn.onclick = ()=>{
+buttonDeleteAll.onclick = ()=>{
     	Swal.fire({
 	title: 'Are you sure?',
 	text: "You won't be able to revert this!",

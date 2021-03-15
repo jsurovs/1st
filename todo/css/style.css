@@ -28,7 +28,7 @@ nav{
 	min-height: 56px;
 }
 .navbar{
-	font-size: 16px;
+	font-size: 17px;
 }
 .nav-tabs{
 	height: 56px;
@@ -88,12 +88,12 @@ nav{
     border-color: #8E49E8;
   }
 .dataInput button{
-    width: 50px;
+    width: 190px;
     height: 100%;
     border: none;
     color: #fff;
     margin-left: 5px;
-    font-size: 21px;
+    font-size: 17px;
     outline: none;
     background: #8E49E8;
     cursor: pointer;
