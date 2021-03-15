@@ -88,7 +88,7 @@ nav{
     border-color: #8E49E8;
   }
 .dataInput button{
-    min-width: 190px;
+    width: 50px;
     height: 100%;
     border: none;
     color: #fff;
@@ -104,8 +104,8 @@ nav{
   }
 .dataInput button:hover,
 .footer button:hover{
-    background: #721ce3;
-    opacity: 1.5;
+    background: #8E49E8;
+    opacity: 0.6;
   }
 .dataInput button.active{
     opacity: 1;
