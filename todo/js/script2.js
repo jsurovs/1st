@@ -24,14 +24,14 @@ showTasks();
 
 todoButton.onclick = ()=>{
 	let userEnteredValue = todoInput.value;
-	let getLocalStorageData = localStorage.getItem("PendingArray");
+	let getLocalStorageData = localStorage.getItem("LS-ToDo");
 		if(getLocalStorageData == null){
 			listArray = [];
 		}else{
 			listArray = JSON.parse(getLocalStorageData);
 		}
 	listArray.push(userEnteredValue);
-	localStorage.setItem("PendingArray", JSON.stringify(listArray));
+	localStorage.setItem("LS-ToDo", JSON.stringify(listArray));
 	showTasks();
 	$("input:text").focus();
 	todoButton.classList.remove("active");
@@ -42,7 +42,7 @@ function keyCode(event) {
 	let userEnteredValue = todoInput.value;
 	if(x == 13 && todoInput.value != ""){	
 		listArray.push(userEnteredValue);
-		localStorage.setItem("PendingArray", JSON.stringify(listArray));
+		localStorage.setItem("LS-ToDo", JSON.stringify(listArray));
 		showTasks();
 		$("input:text").focus();
 		todoButton.classList.remove("active");
@@ -52,7 +52,7 @@ function keyCode(event) {
 //################## show all tasks function ##################
 
 function showTasks(){
-	let getLocalStorageData = localStorage.getItem("PendingArray");
+	let getLocalStorageData = localStorage.getItem("LS-ToDo");
 	if(getLocalStorageData == null){
 		listArray = [];
 	}else{
@@ -78,32 +78,22 @@ function showTasks(){
 
 //################## set completed task status ##################
 
-function completeTheTask(index) {
-	
-	let getLocalStorageData = localStorage.getItem(localStorage.key("PendingArray"));
-	let getLocalStorageDataValue = getLocalStorageData.value;
+function completeTheTask(index, value) {
+	let getLocalStorageData2 = localStorage.getItem("LS-ToDo");
+	listArray = JSON.parse(getLocalStorageData2);
+	index = localStorage.setItem("LS-ToDo", JSON.stringify(listArray));
 
-	let getCompleteLocalStorageData = localStorage.getItem("CompleteArray");
-		if(getCompleteLocalStorageData == null){
-		listArray = [];
-		}else{
-			listArray = JSON.parse(getCompleteLocalStorageData);
-		}
-	listArray.push(getLocalStorageDataValue);
-	localStorage.setItem("CompleteArray", JSON.stringify(listArray));
-	
-
-//	CompleteTodos.push(value);
-//	localStorage.setItem("CompleteArray", JSON.stringify(CompleteTodos));
+  	listArray.push(index);
+	localStorage.setItem("LS-Completed", JSON.stringify(listArray2));
 	
 	deleteTaskAfterComplete();
 }
 
 function deleteTaskAfterComplete(index){
-	let getLocalStorageData = localStorage.getItem("PendingArray");
+	let getLocalStorageData = localStorage.getItem("LS-ToDo");
 	listArray = JSON.parse(getLocalStorageData);
 	listArray.splice(index, 1);
-	localStorage.setItem("PendingArray", JSON.stringify(listArray));
+	localStorage.setItem("LS-ToDo", JSON.stringify(listArray));
 	showTasks();
 }
 
@@ -123,10 +113,10 @@ function deleteTask(index){
     return }
 	}).then((result) => {
   		if (result.isConfirmed) {
-			let getLocalStorageData = localStorage.getItem("PendingArray", index);
+			let getLocalStorageData = localStorage.getItem("LS-ToDo");
 			listArray = JSON.parse(getLocalStorageData);
 			listArray.splice(index, 1);
-			localStorage.setItem("PendingArray", JSON.stringify(listArray));
+			localStorage.setItem("LS-ToDo", JSON.stringify(listArray));
 			showTasks();
 		Swal.fire(
 		'Deleted!',
@@ -154,7 +144,7 @@ buttonDeleteAll.onclick = ()=>{
 	}).then((result) => {
   		if (result.isConfirmed) {
 	       listArray = [];
-	       localStorage.setItem("PendingArray", JSON.stringify(listArray));
+	       localStorage.setItem("LS-ToDo", JSON.stringify(listArray));
 	       showTasks();
         Swal.fire(
 		'Deleted!',

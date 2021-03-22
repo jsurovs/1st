@@ -125,7 +125,8 @@ nav{
     overflow-y: auto;
 	padding-left: 0px;
 }
-.ToDoList li{
+.ToDoList li,
+.CompleteList li{
     position: relative;
     list-style: none;
     height: 45px;
@@ -138,20 +139,8 @@ nav{
     cursor: default;
     overflow: hidden;
   }
-.CompleteList {
-	position: relative;
-    list-style: none;
-    height: 45px;
-    line-height: 45px;
-    margin-bottom: 8px;
-    background: lightgrey;
-	font-weight: 600;
-    border-radius: 3px;
-    padding: 0 15px;
-    cursor: default;
-    overflow: hidden;
-}
-.ToDoList li .icon{
+.ToDoList li .icon,
+.CompleteList li {
     position: absolute;
     right: -45px;
     background: #e74c3c;
