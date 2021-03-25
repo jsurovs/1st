@@ -97,7 +97,8 @@ function completeTheTask(index) {
 		}else{
 			listArray2 = JSON.parse(getCompleteLocalStorageData);
 		}
-	listArray2.push(index);
+	
+	listArray2.push(listArray);
 	localStorage.setItem("CompleteArray", JSON.stringify(listArray2));
 	showCompleteTasks();
 	deleteTaskAfterComplete();
