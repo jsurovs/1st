@@ -99,7 +99,7 @@
 							</div>
 							<div class="footer text-center">
 								<span><i class="fa fa-tasks" aria-hidden="true"></i> You have scheduled <span class="pendingTasks" style="color:red"></span> tasks <i class="fa fa-tasks" aria-hidden="true"></i></span>
-								<button type="button" class="btn-clear-all" onclick="buttonDeleteAll()">
+								<button type="button" class="btn-clear-all active" onclick="buttonDeleteAll()">
 									<i class="fas fa-trash-alt"></i>
 									Clear all</button>
 							</div>
@@ -114,7 +114,11 @@
 								<li class="listed">test2</li>
 							</ul>
 							<div class="footer text-center">
-								<span><i class="fa fa-tasks" aria-hidden="true"></i> You have finished<span class="finishedTasks" style="color:red"></span> tasks <i class="fa fa-tasks" aria-hidden="true"></i></span>
+								<span><i class="fa fa-tasks" aria-hidden="true"></i> You have finished <span class="finishedTasks" style="color:red"></span> tasks <i class="fa fa-tasks" aria-hidden="true"></i></span>
+								<button type="button" class="btn-clear-all deleteAllCompleted" onclick="deleteAllCompleted()">
+								<i class="fas fa-trash-alt"></i>
+								Clear all
+								</button>
 							</div>
 						</div>
 					</div>

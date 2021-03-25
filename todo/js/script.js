@@ -5,6 +5,7 @@ const todoButton = document.querySelector(".dataInput button");
 const todoList = document.querySelector(".ToDoList");
 const completeList = document.querySelector(".CompleteList");
 const buttonDeleteAll= document.querySelector(".footer button");
+const deleteAllCompleted = document.querySelector(".deleteAllCompleted");
 const filterOption = document.querySelector('.filter');
 //######## date //########
 const date = document.getElementById('date');
@@ -25,12 +26,13 @@ todoInput.onkeyup = ()=>{
 }
 //################## show all tasks from data storage //########
 showTasks();
+showCompleteTasks();
 //######## adding new element to local data storage //########
 todoButton.onclick = ()=>{
 	let userEnteredDate = todoDate.value;	
 	let userEnteredValue = todoInput.value;
 	if(userEnteredDate.length > 0){
-		space = " / "
+		space = " / Title: "
 	} else {
 		space = ""
 	}
@@ -86,9 +88,18 @@ function showTasks(){
 	}
 //######## set completed task status //########
 function completeTheTask(index) {
-	let getCompleteLocalStorageData = localStorage.getItem("TodoArray");	
-	listArray.push(getPendingLocalStorageData);
-	localStorage.setItem("CompleteArray", JSON.stringify(listArray));
+	let getLocalStorageData = localStorage.getItem("TodoArray", index);
+		listArray = JSON.parse(getLocalStorageData);
+	
+	let getCompleteLocalStorageData = localStorage.getItem("CompleteArray");
+	if(getCompleteLocalStorageData == null){
+			listArray2 = [];
+		}else{
+			listArray2 = JSON.parse(getCompleteLocalStorageData);
+		}
+	listArray2.push(index);
+	localStorage.setItem("CompleteArray", JSON.stringify(listArray2));
+	showCompleteTasks();
 	deleteTaskAfterComplete();
 }
 function deleteTaskAfterComplete(index){
@@ -144,6 +155,83 @@ buttonDeleteAll.onclick = ()=>{
 	       listArray = [];
 	       localStorage.setItem("TodoArray", JSON.stringify(listArray));
 	       showTasks();
+        Swal.fire(
+		'Deleted!',
+		'Your file has been deleted.',
+		'success'
+		)
+  		}
+	})
+}
+//######## show complete tasks //########
+function showCompleteTasks(){
+	let getCompleteLocalStorageData = localStorage.getItem("CompleteArray");
+	if(getCompleteLocalStorageData == null){
+			listArray2 = [];
+		}else{
+			listArray2 = JSON.parse(getCompleteLocalStorageData);
+		}
+	
+	const finishedTasksNumb = document.querySelector(".finishedTasks");
+	finishedTasksNumb.textContent = listArray2.length;
+	if(listArray2.length > 0){
+		deleteAllCompleted.classList.add("active");
+	}else{
+		deleteAllCompleted.classList.remove("active");
+	}
+	
+		let newTodo = "";
+	listArray2.forEach((element, index) => {
+		newTodo += `<li>${element}<span class="icon" onclick="deleteFinishedTask(${index})"><i class="fas fa-trash"></i></li>`;
+	});
+	completeList.innerHTML = newTodo;
+	todoInput.value = "";
+	todoDate.value = "";
+}
+function deleteFinishedTask(index){
+	Swal.fire({
+	title: 'Are you sure?',
+	text: "You won't be able to revert this!",
+	icon: 'warning',
+	showCancelButton: true,
+	confirmButtonColor: '#3085d6',
+	cancelButtonColor: '#d33',
+	confirmButtonText: 'Yes, delete it!',
+	showLoaderOnConfirm: true,
+		preConfirm: () => {
+    return }
+	}).then((result) => {
+  		if (result.isConfirmed) {
+			let getCompleteLocalStorageData = localStorage.getItem("CompleteArray", index);
+			listArray2 = JSON.parse(getCompleteLocalStorageData);
+			listArray2.splice(index, 1);
+			localStorage.setItem("CompleteArray", JSON.stringify(listArray2));
+			showCompleteTasks();
+		Swal.fire(
+		'Deleted!',
+		'Your file has been deleted.',
+		'success'
+		)
+  		}
+	})
+}
+deleteAllCompleted.onclick = ()=>{
+    	Swal.fire({
+	title: 'Are you sure?',
+	text: "You won't be able to revert this!",
+	icon: 'warning',
+	showCancelButton: true,
+	confirmButtonColor: '#3085d6',
+	cancelButtonColor: '#d33',
+	confirmButtonText: 'Yes, delete it!',
+	showLoaderOnConfirm: true,
+		preConfirm: () => {
+    return }
+	}).then((result) => {
+  		if (result.isConfirmed) {
+	       listArray2 = [];
+	       localStorage.setItem("CompleteArray", JSON.stringify(listArray2));
+	       showCompleteTasks();
         Swal.fire(
 		'Deleted!',
 		'Your file has been deleted.',
