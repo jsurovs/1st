@@ -1,58 +1,66 @@
+//######## selectors //########
 const todoInput = document.querySelector(".dataInput input");
+const todoDate = document.querySelector("#datepicker");
 const todoButton = document.querySelector(".dataInput button");
 const todoList = document.querySelector(".ToDoList");
 const completeList = document.querySelector(".CompleteList");
 const buttonDeleteAll= document.querySelector(".footer button");
-const filterOption = document.querySelector(".filter");
+const filterOption = document.querySelector('.filter');
+//######## date //########
+const date = document.getElementById('date');
+const options = {weekday: "long", month: "short", day: "numeric"};
+const today = new Date();
+date.innerHTML = today.toLocaleDateString("en-LV", options);
 
-//################## input box validation ##################
-
+//######## input box validation //########
 todoInput.onkeyup = ()=>{
+	let userEnteredDate = todoDate.value;	
 	let userEnteredValue = todoInput.value;
-	if(userEnteredValue.trim() != 0){
+	
+	if(isNaN(userEnteredValue) || userEnteredDate != "null"){
 		todoButton.classList.add("active");
 	}else{
 		todoButton.classList.remove("active");
 	}
 }
-
-//################## show all tasks from data storage ##################
-
+//################## show all tasks from data storage //########
 showTasks();
-
-//################## adding new element to local data storage ##################
-
+//######## adding new element to local data storage //########
 todoButton.onclick = ()=>{
+	let userEnteredDate = todoDate.value;	
 	let userEnteredValue = todoInput.value;
-	let getLocalStorageData = localStorage.getItem("PendingArray");
+	if(userEnteredDate.length > 0){
+		space = " / "
+	} else {
+		space = ""
+	}
+	var userEnteredData = userEnteredDate + space + userEnteredValue;
+	let getLocalStorageData = localStorage.getItem("TodoArray");
 		if(getLocalStorageData == null){
 			listArray = [];
 		}else{
 			listArray = JSON.parse(getLocalStorageData);
 		}
-	listArray.push(userEnteredValue);
-	localStorage.setItem("PendingArray", JSON.stringify(listArray));
+	listArray.push(userEnteredData);
+	localStorage.setItem("TodoArray", JSON.stringify(listArray));
 	showTasks();
 	$("input:text").focus();
 	todoButton.classList.remove("active");
 }
-
 function keyCode(event) {
 	var x = event.keyCode;
 	let userEnteredValue = todoInput.value;
 	if(x == 13 && todoInput.value != ""){	
 		listArray.push(userEnteredValue);
-		localStorage.setItem("PendingArray", JSON.stringify(listArray));
+		localStorage.setItem("TodoArray", JSON.stringify(listArray));
 		showTasks();
 		$("input:text").focus();
 		todoButton.classList.remove("active");
 	}
 }
-
-//################## show all tasks function ##################
-
+//######## show all tasks function //########
 function showTasks(){
-	let getLocalStorageData = localStorage.getItem("PendingArray");
+	let getLocalStorageData = localStorage.getItem("TodoArray");
 	if(getLocalStorageData == null){
 		listArray = [];
 	}else{
@@ -74,41 +82,23 @@ function showTasks(){
 	
 	todoList.innerHTML = newTodo;
 	todoInput.value = "";
+	todoDate.value = "";	
 	}
-
-//################## set completed task status ##################
-
+//######## set completed task status //########
 function completeTheTask(index) {
-	
-	let getLocalStorageData = localStorage.getItem(localStorage.key("PendingArray"));
-	let getLocalStorageDataValue = getLocalStorageData.value;
-
-	let getCompleteLocalStorageData = localStorage.getItem("CompleteArray");
-		if(getCompleteLocalStorageData == null){
-		listArray = [];
-		}else{
-			listArray = JSON.parse(getCompleteLocalStorageData);
-		}
-	listArray.push(getLocalStorageDataValue);
+	let getCompleteLocalStorageData = localStorage.getItem("TodoArray");	
+	listArray.push(getPendingLocalStorageData);
 	localStorage.setItem("CompleteArray", JSON.stringify(listArray));
-	
-
-//	CompleteTodos.push(value);
-//	localStorage.setItem("CompleteArray", JSON.stringify(CompleteTodos));
-	
 	deleteTaskAfterComplete();
 }
-
 function deleteTaskAfterComplete(index){
-	let getLocalStorageData = localStorage.getItem("PendingArray");
+	let getLocalStorageData = localStorage.getItem("TodoArray");
 	listArray = JSON.parse(getLocalStorageData);
 	listArray.splice(index, 1);
-	localStorage.setItem("PendingArray", JSON.stringify(listArray));
+	localStorage.setItem("TodoArray", JSON.stringify(listArray));
 	showTasks();
 }
-
-//################## delete task function with swal validation ##################
-
+//######## delete task function with swal validation //########
 function deleteTask(index){
 	Swal.fire({
 	title: 'Are you sure?',
@@ -123,10 +113,10 @@ function deleteTask(index){
     return }
 	}).then((result) => {
   		if (result.isConfirmed) {
-			let getLocalStorageData = localStorage.getItem("PendingArray", index);
+			let getLocalStorageData = localStorage.getItem("TodoArray", index);
 			listArray = JSON.parse(getLocalStorageData);
 			listArray.splice(index, 1);
-			localStorage.setItem("PendingArray", JSON.stringify(listArray));
+			localStorage.setItem("TodoArray", JSON.stringify(listArray));
 			showTasks();
 		Swal.fire(
 		'Deleted!',
@@ -136,9 +126,7 @@ function deleteTask(index){
   		}
 	})
 }
-
-//################## delete all tasks function with swal validation ##################
-
+//######## delete all tasks function with swal validation //########
 buttonDeleteAll.onclick = ()=>{
     	Swal.fire({
 	title: 'Are you sure?',
@@ -154,7 +142,7 @@ buttonDeleteAll.onclick = ()=>{
 	}).then((result) => {
   		if (result.isConfirmed) {
 	       listArray = [];
-	       localStorage.setItem("PendingArray", JSON.stringify(listArray));
+	       localStorage.setItem("TodoArray", JSON.stringify(listArray));
 	       showTasks();
         Swal.fire(
 		'Deleted!',

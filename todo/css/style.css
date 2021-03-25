@@ -8,6 +8,7 @@
 i {
 	margin-right: 10px;
 }
+
 html{
 	font-family: 'Roboto Slab', serif;
 	height: 100%;
@@ -24,6 +25,7 @@ html {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
+
 nav{
 	min-height: 56px;
 }
@@ -41,6 +43,7 @@ nav{
 	padding-left: 0px;
 	padding-right: 0px;
 }
+
 .nav-tabs .nav-link{
 	width: 130px;
 	margin-left: 10px;
@@ -54,6 +57,15 @@ nav{
 	color: white;
 	font-weight: bold;
 }
+
+.date{
+	display: block;
+	text-align: center;
+	padding: 10px;
+	font-size: 17px;
+	font-weight: bold;
+}
+
 .wrapper{
     background: #fff;
     max-width: 600px;
@@ -74,6 +86,10 @@ nav{
     display: flex;
     height: 45px;
   }
+#todoForm{
+	display: flex;
+	flex-direction: column;
+}
 .dataInput input{
     width: 100%;
     height: 100%;
@@ -111,6 +127,7 @@ nav{
     opacity: 1;
     pointer-events: auto;
   }
+
 .wrapper .ToDoList{
 	min-height: 50px;
     max-height: 500px;
@@ -126,7 +143,7 @@ nav{
 	padding-left: 0px;
 }
 .ToDoList li,
-.CompleteList li{
+.wrapper .CompleteList li{
     position: relative;
     list-style: none;
     height: 45px;
@@ -139,8 +156,8 @@ nav{
     cursor: default;
     overflow: hidden;
   }
-.ToDoList li .icon,
-.CompleteList li {
+
+.ToDoList li .icon {
     position: absolute;
     right: -45px;
     background: #e74c3c;
@@ -169,6 +186,37 @@ nav{
     right: 47px;
 	border-radius: 0 3px 3px 0;
   }
+
+.wrapper .CompleteList li .icon {
+    position: absolute;
+    right: -45px;
+    background: #e74c3c;
+    width: 45px;
+    text-align: center;
+    color: #fff;
+    border-radius: 0 3px 3px 0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+.wrapper .CompleteList li:hover .icon{
+    right: 0px;
+  }
+.wrapper .CompleteList li .icon2{
+    position: absolute;
+    right: -95px;
+    background: green;
+    width: 45px;
+    text-align: center;
+    color: #fff;
+    border-radius: 0 3px 3px 0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+.wrapper .CompleteList li:hover .icon2{
+    right: 47px;
+	border-radius: 0 3px 3px 0;
+  }
+
 .wrapper .footer{
     display: flex;
     width: 100%;
