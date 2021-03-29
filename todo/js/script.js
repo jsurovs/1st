@@ -127,15 +127,8 @@ function completeTask(index) {
 	localStorage.setItem(taskStorage, itemString);
 	showTasks();	
 	showCompleteTasks();
-	deleteTaskAfterComplete();
 }
-function deleteTaskAfterComplete(index){
-	let getLocalStorageData = localStorage.getItem("TodoArray");
-	listArray = JSON.parse(getLocalStorageData);
-	listArray.splice(index, 1);
-	localStorage.setItem("TodoArray", JSON.stringify(listArray));
-	showTasks();
-}
+
 //######## delete task function with swal validation //########
 function deleteTask(index){
 	Swal.fire({
