@@ -7,11 +7,19 @@ const completeList = document.querySelector(".CompleteList");
 const buttonDeleteAll= document.querySelector(".footer button");
 const deleteAllCompleted = document.querySelector(".deleteAllCompleted");
 const filterOption = document.querySelector('.filter');
+
+const taskStorage = "TodoArray";
+const completeTasks = "CompleteArray";
+
 //######## date //########
 const date = document.getElementById('date');
 const options = {weekday: "long", month: "short", day: "numeric"};
 const today = new Date();
 date.innerHTML = today.toLocaleDateString("en-LV", options);
+
+$(document).ready(function(){
+	showTasks();
+});
 
 //######## input box validation //########
 todoInput.onkeyup = ()=>{
@@ -79,7 +87,7 @@ function showTasks(){
 	
 	let newTodo = "";
 	listArray.forEach((element, index) => {
-		newTodo += `<li>${element}<span class="icon" onclick="deleteTask(${index})"><i class="fas fa-trash"></i></span><span class="icon2" onclick="completeTheTask(${index})"><i class="fas fa-check-circle"></i></span></li>`;
+		newTodo += `<li>${element}<span class="icon" onclick="deleteTask(${index})"><i class="fas fa-trash"></i></span><span class="icon2" onclick="completeTask(${index})"><i class="fas fa-check-circle"></i></span></li>`;
 	});
 	
 	todoList.innerHTML = newTodo;
@@ -87,19 +95,37 @@ function showTasks(){
 	todoDate.value = "";	
 	}
 //######## set completed task status //########
-function completeTheTask(index) {
-	let getLocalStorageData = localStorage.getItem("TodoArray", index);
-		listArray = JSON.parse(getLocalStorageData);
-	
-	let getCompleteLocalStorageData = localStorage.getItem("CompleteArray");
-	if(getCompleteLocalStorageData == null){
-			listArray2 = [];
-		}else{
-			listArray2 = JSON.parse(getCompleteLocalStorageData);
-		}
-	
-	listArray2.push(listArray);
-	localStorage.setItem("CompleteArray", JSON.stringify(listArray2));
+
+function storageGet(localItem){
+	var localItems = localStorage.getItem(localItem);
+	return localItems;
+}
+
+function completeTask(index) {
+	var storage = storageGet(taskStorage);
+	var itemArray = JSON.parse(storage);
+
+	// Set as complete
+	var task = itemArray[index];
+	console.log(task);
+	var completed = storageGet(completeTasks);
+
+	if(completed == null){
+		var completedTask = [];
+		completedTask.push(task);
+		var completedString = JSON.stringify(completedTask);
+	}else{
+		var completedArray = JSON.parse(completed);
+		completedArray.push(task);
+		var completedString = JSON.stringify(completedArray);
+	}
+
+	localStorage.setItem(completeTasks, completedString);
+
+	itemArray.splice(index, 1);
+	var itemString = JSON.stringify(itemArray);
+	localStorage.setItem(taskStorage, itemString);
+	showTasks();	
 	showCompleteTasks();
 	deleteTaskAfterComplete();
 }
