@@ -22,16 +22,19 @@ $(document).ready(function(){
 });
 
 //######## input box validation //########
-todoInput.onkeyup = ()=>{
+// todoInput.onkeyup = ()=>{
+$(".dataInput input").on("input change", function(){
 	let userEnteredDate = todoDate.value;	
 	let userEnteredValue = todoInput.value;
+
+	console.log('changed input');
 	
-	if(isNaN(userEnteredValue) || userEnteredDate != "null"){
+	if(isNaN(userEnteredValue) && userEnteredDate != ""){
 		todoButton.classList.add("active");
 	}else{
 		todoButton.classList.remove("active");
 	}
-}
+});
 //################## show all tasks from data storage //########
 showTasks();
 showCompleteTasks();
